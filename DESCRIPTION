@@ -1,0 +1,13 @@
+Package: hambiRNAseq
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Shane",
+           family = "Hogle",
+           role = c("aut", "cre"),
+           email = "shane.hogle@utu.fi",
+           comment = c(ORCID = "0000-0003-2595-3863"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
