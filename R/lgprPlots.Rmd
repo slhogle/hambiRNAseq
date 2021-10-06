@@ -1,0 +1,970 @@
+---
+title: "Plots for Fig 1"
+output: html_notebook
+---
+
+## Set up environment
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+library(patchwork)
+```
+
+# Read formated model output
+```{r}
+data.atp <- readRDS(here::here("output", "data_atp.rds")) 
+data.bac <- readRDS(here::here("output", "data_bac.rds"))
+data.cil <- readRDS(here::here("output", "data_cil.rds"))
+
+vars.atp <- readRDS(here::here("output", "vars_atp.rds"))
+vars.bac <- readRDS(here::here("output", "vars_bac.rds"))
+vars.cil <- readRDS(here::here("output", "vars_cil.rds"))
+
+rel.atp <- readRDS(here::here("output", "relevance_atp.rds"))
+rel.bac <- readRDS(here::here("output", "relevance_bac.rds"))
+rel.cil <- readRDS(here::here("output", "relevance_cil.rds"))
+```
+
+# GLOBAL PLOT PARAMS
+```{r}
+linesize <- 0.25
+pointsize <- 0.5
+alpha <- 0.1
+```
+
+# ATP
+```{r}
+P1_atp <- ggplot(data.atp, aes(x=day, group=id)) + 
+  geom_ribbon(aes(ymax=upper, ymin=lower), fill="#C0C0C0", alpha=alpha) +
+  geom_point(aes(y=obs, color=pred_evo), size=pointsize) +
+  geom_line(aes(y=y, color=pred_evo), size=linesize) +
+  labs(x="Day", y="", color="") + 
+  scale_y_log10() +
+  theme_bw()
+
+P2_atp <- rel.atp %>%
+  mutate(var=case_when(str_detect(name, "id") ~ "ID",
+                       str_detect(name, "recovery") ~ "Recov",
+                       str_detect(name, "noise") ~ "Noise",
+                       str_detect(name, "\\(evo\\)") ~ "Evo",
+                       str_detect(name, "\\(pred\\)") ~ "Pred",
+                       str_detect(name, "pred_evo") ~ "Evo/Pred",
+                       TRUE ~ "Day"
+                       )) %>%
+  mutate(var=factor(var, levels=c("Day", "Recov", "Evo/Pred", "Pred", "Evo", "ID", "Noise"))) %>%
+  ggplot(aes(x=var, y=value, fill=Component)) +
+  geom_violin(scale="width", size=linesize) +
+  labs(x="", y="") + 
+  theme_bw()
+
+P3_atp <- vars.atp %>%
+  mutate(variable=factor(variable, levels=c("day", "recovery", "pred_evo"), 
+                         labels=c("Day", "Recov", "Evo/Pred"))) %>%
+  ggplot(aes(x=day, y=y, ymax=upper, ymin=lower, fill=pred_evo, color=pred_evo)) + 
+  geom_ribbon(alpha=alpha) +
+  labs(x="Day", y="") + 
+  geom_line(size=linesize) +
+  facet_wrap(~variable) +
+  theme_bw()
+
+ATPFINAL <- P1_atp + P2_atp + P3_atp + 
+  plot_layout(guides="collect", widths = c(1, 1, 3)) + 
+  plot_annotation(title="ATP")
+```
+
+# BACTERIA
+```{r}
+P1_bac <- ggplot(data.bac, aes(x=day, group=id)) + 
+  geom_ribbon(aes(ymax=upper, ymin=lower), fill="#C0C0C0", alpha=alpha) +
+  geom_point(aes(y=obs, color=pred),size=pointsize) +
+  geom_line(aes(y=y, color=pred), size=linesize) +
+  labs(x="Day", y="", color="") + 
+  
+  scale_y_log10() +
+  theme_bw()
+
+P2_bac <- rel.bac %>%
+  mutate(var=case_when(str_detect(name, "id") ~ "ID",
+                       str_detect(name, "recovery") ~ "Recov",
+                       str_detect(name, "noise") ~ "Noise",
+                       str_detect(name, "\\(evo\\)") ~ "Evo",
+                       str_detect(name, "\\(pred\\)") ~ "Pred",
+                       str_detect(name, "pred_evo") ~ "Evo/Pred",
+                       TRUE ~ "Day"
+                       )) %>%
+  mutate(var=factor(var, levels=c("Day", "Recov", "Pred", "Evo/Pred", "Evo", "ID", "Noise"))) %>%
+  ggplot(aes(x=var, y=value, fill=Component)) +
+  geom_violin(scale="width", size=linesize) +
+  labs(x="", y="") + 
+  theme_bw()
+
+P3_bac <- vars.bac %>%
+  mutate(variable=factor(variable, levels=c("day", "recovery", "pred"), 
+                         labels=c("Day", "Recov", "Pred"))) %>%
+  ggplot(aes(x=day, y=y, ymax=upper, ymin=lower, fill=pred, color=pred)) + 
+  geom_ribbon(alpha=alpha) +
+  labs(x="Day", y="") + 
+  geom_line(size=linesize) +
+  facet_wrap(~variable) +
+  theme_bw()
+
+BACFINAL <- P1_bac + P2_bac + P3_bac + 
+  plot_layout(guides="collect", widths = c(1, 1, 3)) + 
+  plot_annotation(title="Bacteria")
+```
+
+# CILIATES
+```{r}
+P1_cil <- ggplot(data.cil, aes(x=day, group=id)) + 
+  geom_ribbon(aes(ymax=upper, ymin=lower), fill="#C0C0C0", alpha=alpha) +
+  geom_point(aes(y=obs, color=evo), size=pointsize) +
+  geom_line(aes(y=y, color=evo), size=linesize) +
+  labs(x="Day", y="", color="") + 
+  scale_y_log10() +
+  theme_bw() 
+
+P2_cil <- rel.cil %>%
+  mutate(var=case_when(str_detect(name, "id") ~ "ID",
+                       str_detect(name, "recovery") ~ "Recov",
+                       str_detect(name, "noise") ~ "Noise",
+                       str_detect(name, "\\(evo\\)") ~ "Evo",
+                       str_detect(name, "\\(pred\\)") ~ "Pred",
+                       str_detect(name, "pred_evo") ~ "Evo/Pred",
+                       TRUE ~ "Day"
+                       )) %>%
+  mutate(var=factor(var, levels=c("Day", "Recov", "Pred", "Evo/Pred", "Evo", "ID", "Noise"))) %>%
+  ggplot(aes(x=var, y=value, fill=Component)) +
+  geom_violin(scale="width", size=linesize) +
+  labs(x="", y="") + 
+  ylim(c(0, 0.8)) + 
+  theme_bw()
+
+P3_cil <- vars.cil %>%
+  mutate(variable=factor(variable, levels=c("day", "recovery", "evo"),
+                         labels=c("Day", "Recov", "Evo"))) %>%
+  ggplot(aes(x=day, y=y, ymax=upper, ymin=lower)) + 
+  geom_ribbon(alpha=alpha) +
+  labs(x="Day", y="") + 
+  geom_line(size=linesize) +
+  theme_bw()
+
+CILFINAL <- P1_cil + P2_cil + P3_cil + 
+  plot_layout(guides="collect", widths = c(1, 1, 3)) + 
+  plot_annotation(title="Ciliates")
+```
+
+# FINAL PLOT
+```{r}
+PFINAL <- (ATPFINAL / BACFINAL / CILFINAL) & 
+  scale_color_viridis_d(begin=0, end=0.85, na.value = "black") &
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        legend.position = "none", 
+        text=element_text(size=8))
+
+ggsave(plot=PFINAL, filename=here::here("figs", "Fig1.svg"), device="svg", dpi=300, width=17.8, height=12.8, units="cm")
+```
+
+
+
+## Wrangle data
+Read data and filter 
+```{r message=FALSE, warning=FALSE}
+metadata <- read_tsv(here("data", "metadata.tsv"))
+
+cil <- read_tsv(here("data", "cilliate_counts.tsv")) %>% 
+  mutate(`0`= 10000) %>%
+  gather(day, value, -sample) %>%
+  mutate(day=as.numeric(day)) %>%
+  mutate(measurement="predator")
+
+bac <- read_tsv(here("data", "ppy_colony_counts.tsv")) %>% select(-platetype) %>% 
+  mutate(`0`= (2.9e+07+1e+07)) %>%
+  gather(day, value, -sample) %>% 
+  mutate(day=as.numeric(day)) %>%
+  mutate(measurement="prey")
+
+atp <- read_tsv(here("data", "atp_concentration.tsv")) %>%
+  gather(day, value, -sample) %>%
+  mutate(day=as.numeric(day)) %>%
+  mutate(measurement="ATP")
+
+diversity <- read_tsv(here("data", "diversity.tsv")) %>%
+  filter(measurement == "q1") %>% mutate(measurement="shannon")
+
+SBW25 <- read_tsv(here("data", "amplicon_counts.tsv"), col_types="ccccd") %>%
+  filter(!str_detect(sample, "^Kit-control")) %>%
+  filter(!str_detect(sample, "^colony")) %>%
+  group_by(sample) %>%
+  mutate(count1=sum(count)) %>%
+  ungroup() %>%
+  group_by(sample) %>%
+  mutate(value=count/count1) %>% select(-count1) %>%
+  ungroup() %>%
+  separate(sample, c("day", "sample"), sep="-") %>% 
+  mutate(day=substring(day, 2)) %>% mutate(day=as.numeric(day)) %>%
+  filter(strainID=="PsFluSBW25") %>%
+  mutate(measurement="PsFluSBW25") %>% select(sample, day, value, measurement)
+
+counts <- bind_rows(cil, bac, atp, diversity, SBW25)
+
+counts.full <- left_join(counts, metadata) %>%
+  filter(pseudomonas_hist %in% c("ancestral", "coevolved")) %>%
+  filter(tetra_hist %in% c("coevolved", "no_tetra")) %>%
+  mutate(measurement=factor(measurement, levels=c("ATP", "prey", "predator", "shannon", "PsFluSBW25"))) %>%
+  mutate(predation=factor(predation, levels=c("no", "yes")),
+         pseudomonas_hist=factor(pseudomonas_hist, levels=c("ancestral", "coevolved")))
+
+summary.stats <- counts.full %>%
+  group_by(pseudomonas_hist, tetra_hist, measurement, day) %>%
+  summarize(mean=mean(value, na.rm=TRUE), 
+          q25=quantile(value, probs=c(0.25), na.rm=TRUE),
+          q75=quantile(value, probs=c(0.75), na.rm=TRUE)) %>%
+   ungroup()
+```
+
+## Plot the data
+```{r}
+ggplot(counts.full) +
+  geom_vline(xintercept=41, color="red") +
+  geom_ribbon(data=summary.stats, aes(x=day, ymin = q25, ymax = q75, color=tetra_hist), fill = "grey70") +
+  geom_line(aes(x=day, y=value, group=interaction(replicate, predation), color=tetra_hist), alpha=0.5) +
+  geom_point(data=summary.stats, aes(x=day, y=mean, shape=tetra_hist)) +
+  geom_line(data=summary.stats, aes(x=day, y=mean, linetype=tetra_hist)) +
+  facet_grid(measurement ~ pseudomonas_hist, scales="free_y") + 
+  xlim(0, 45) +
+  labs(y="Cells/mL", x="Days", color="Predation") +
+  scale_color_brewer(palette="Dark2") +
+  scale_y_log10() +
+  theme_bw() +
+  theme(legend.position = "none", axis.text.y=element_blank())
+
+ggsave(filename=here("figs", "cell_conc_0.svg"), device="svg", width=5.5, height=7, units="in")
+```
+
+```{r}
+ggplot(counts.full, aes(x=day, y=value)) +
+  geom_vline(xintercept=41, color="red") +
+  #geom_point(aes(fill=tetra_hist), shape=23, size=2) +
+  stat_summary(aes(color=tetra_hist), fun.data=mean_se, geom="pointrange", fatten=1.5) +
+  #stat_summary(aes(color=tetra_hist), fun.ymin=min, fun.y=mean, fun.ymax=max, geom="pointrange") +
+  facet_grid(measurement ~ pseudomonas_hist, scales="free_y") + 
+  xlim(0, 45) +
+  labs(y="Cells/mL", x="Days", color="Predation") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw() +
+  theme(legend.position = "none", axis.text.y=element_blank())
+
+ggsave(filename=here("figs", "alpha_0.svg"), device="svg", width=5.5, height=7, units="in")
+```
+
+# switch faceting around
+```{r}
+ggplot(counts.full) +
+  geom_vline(xintercept=41, color="red") +
+  geom_ribbon(data=summary.stats, aes(x=day, ymin = q25, ymax = q75, color=pseudomonas_hist), fill = "grey70") +
+  geom_line(aes(x=day, y=value, group=interaction(replicate, pseudomonas_hist), color=pseudomonas_hist), alpha=0.5) +
+  geom_point(data=summary.stats, aes(x=day, y=mean, shape=pseudomonas_hist)) +
+  geom_line(data=summary.stats, aes(x=day, y=mean, linetype=pseudomonas_hist)) +
+  facet_grid(measurement ~ tetra_hist, scales="free_y") + 
+  xlim(0, 45) +
+  labs(y="Cells/mL", x="Days", color="Pseudomonas") +
+  scale_color_brewer(palette="Dark2") +
+  scale_y_log10() +
+  theme_bw()# +
+  #theme(legend.position = "none", axis.text.y=element_blank())
+
+#ggsave(filename=here("figs", "cell_conc_1.svg"), device="svg", width=5.5, height=7, units="in")
+
+```
+
+```{r}
+ggplot(counts.full, aes(x=day, y=value)) +
+  geom_vline(xintercept=41, color="red") +
+  stat_summary(aes(color=pseudomonas_hist), fun.data=mean_se, geom="pointrange", fatten=3) +
+  facet_grid(measurement ~ tetra_hist, scales="free_y") + 
+  xlim(0, 45) +
+  labs(y="Cells/mL", x="Days", color="Pseudomonas") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw() #+
+  #theme(legend.position = "none", axis.text.y=element_blank())
+
+#ggsave(filename=here("figs", "alpha_1.svg"), device="svg", width=5.5, height=7, units="in")
+```
+  
+
+```{r}
+summary <- counts_full %>%
+  group_by(pseudomonas_hist, tetra_hist, trophic, day) %>%
+  summarize(mean=mean(cells_mL, na.rm=TRUE), 
+          q25=quantile(cells_mL, probs=c(0.25), na.rm=TRUE),
+          q75=quantile(cells_mL, probs=c(0.75), na.rm=TRUE)) %>%
+   ungroup()
+  
+  
+cil.full.mn <- cil.full %>% 
+  group_by(pseudomonas_hist, tetra_hist, day) %>%
+  summarize(mean=mean(cells_mL, na.rm=TRUE), 
+          q25=quantile(cells_mL, probs=c(0.25), na.rm=TRUE),
+          q75=quantile(cells_mL, probs=c(0.75), na.rm=TRUE)) %>%
+  ungroup() %>%
+  mutate(trophic="predator") %>%
+  gather(var, conc, mean, q25, q75)
+
+bac.ppy.full.mn <- bac.ppy.full %>% 
+  group_by(pseudomonas_hist, tetra_hist, day) %>%
+  summarize(mean=mean(cells_mL, na.rm=TRUE), 
+          q25=quantile(cells_mL, probs=c(0.25), na.rm=TRUE),
+          q75=quantile(cells_mL, probs=c(0.75), na.rm=TRUE)) %>%
+  ungroup() %>%
+  mutate(trophic="prey") %>%
+  gather(var, conc, mean, q25, q75)
+
+summary <- bind_rows(cil.full.mn, bac.ppy.full.mn)
+
+```
+
+## Functions
+Define some helper functions to make plotting nicer
+```{r}
+rename_prey <- function(.data){
+  mutate(.data,
+    prey_history = case_when(
+      .data$prey_history == "ANC" ~ "Ancestral bacteria",
+      .data$prey_history == "EVO" ~ "Co-evolved bacteria",
+      TRUE ~ as.character(.data$prey_history)
+    )
+  )
+}  
+  
+rename_predator <- function(.data){
+  mutate(.data,
+    predator_history = case_when(
+      .data$predator_history == "ANC" ~ "Ancestral ciliates",
+      .data$predator_history == "EVO" ~ "Co-evolved ciliates",
+      .data$predator_history == "no_predator" ~ "No predators",
+      TRUE ~ as.character(.data$predator_history)
+    )
+  )
+}
+```
+
+## Basic plots
+Plot ciliate concentrations over time in different evolution treatments
+```{r}
+  #cil.full %>%
+  #rename_prey() %>%
+  #rename_predator() %>%
+cil.full %>%
+  #mutate(cells_mL=ifelse(cells_mL==0, 0.1, cells_mL)) %>%
+  ggplot() +
+  geom_vline(xintercept=41, color="red") +
+  geom_ribbon(data=cil.full.med, aes(x=day, ymin = conc25, ymax = conc75), fill = "grey70") +
+  geom_line(aes(x=day, y=cells_mL, group=replicate), alpha=0.5) +
+  geom_point(data=cil.full.med, aes(x=day, y=concmn)) +
+  geom_line(data=cil.full.med, aes(x=day, y=concmn)) +
+  #geom_smooth(method=loess, se=FALSE, color="black", size=0.5) +
+  #facet_wrap(prey_history ~ predator_history, scales="free_y") + 
+  facet_grid(~ pseudomonas_hist) + 
+  scale_y_log10() + 
+  labs(y="Predator density (cells/mL)", x="Days", color="Replicate") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw()
+
+#ggsave(filename=here("figs", "ciliate_conc.svg"), device="svg", width=5, height=5, units="in")
+```
+
+
+```{r}
+ggplot(bac.ppy.full) +
+  geom_vline(xintercept=41, color="red") +
+  geom_ribbon(data=bac.ppy.full.med, aes(x=day, ymin = conc25, ymax = conc75, color=tetra_hist), fill = "grey70") +
+  geom_line(aes(x=day, y=cells_mL, group=interaction(replicate, predation), color=tetra_hist), alpha=0.5) +
+  geom_point(data=bac.ppy.full.med, aes(x=day, y=concmn, shape=tetra_hist)) +
+  geom_line(data=bac.ppy.full.med, aes(x=day, y=concmn, linetype=tetra_hist)) +
+  #geom_line(aes(group=interaction(replicate, predation), color=predation, linetype=replicate)) +
+  #geom_point(aes(group=replicate, color=predation, shape=replicate)) +
+  #geom_smooth(method=loess, se=FALSE, color="black", size=0.5) +
+  #facet_wrap(prey_history ~ predator_history, scales="free_y") + 
+  #geom_vline(xintercept = 41) +
+  facet_grid(~ pseudomonas_hist) + 
+  labs(y="Prey density (CFU/mL)", x="Days", color="Predation") +
+  scale_color_brewer(palette="Dark2") +
+  scale_y_log10() +
+  theme_bw()
+```
+
+
+```{r}
+ggplot(counts.full) +
+  geom_vline(xintercept=41, color="red") +
+  geom_ribbon(data=summary, aes(x=day, ymin = q25, ymax = q75, color=tetra_hist), fill = "grey70") +
+  geom_line(aes(x=day, y=cells_mL, group=interaction(replicate, predation), color=tetra_hist), alpha=0.5) +
+  geom_point(data=summary, aes(x=day, y=mean, shape=tetra_hist)) +
+  geom_line(data=summary, aes(x=day, y=mean, linetype=tetra_hist)) +
+  #geom_line(aes(group=interaction(replicate, predation), color=predation, linetype=replicate)) +
+  #geom_point(aes(group=replicate, color=predation, shape=replicate)) +
+  #geom_smooth(method=loess, se=FALSE, color="black", size=0.5) +
+  #facet_wrap(prey_history ~ predator_history, scales="free_y") + 
+  #geom_vline(xintercept = 41) +
+  facet_grid(trophic ~ pseudomonas_hist, scales="free_y") + 
+  labs(y="Cells/mL", x="Days", color="Predation") +
+  scale_color_brewer(palette="Dark2") +
+  scale_y_log10() +
+  theme_bw()
+```
+
+
+Plot bacterial OD over time in different evolution treatments
+```{r}
+bac_high_only %>%
+  filter(predator_history != "no_predator") %>%
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=time_days, y=OD600)) +
+  geom_line(aes(group=replicate, color=replicate)) +
+  geom_point(aes(group=replicate, color=replicate), size=1) +
+  geom_smooth(method=loess, se=FALSE, color="black", size=0.5) +
+  #facet_wrap(prey_history ~ predator_history, scales="free_y") + 
+  facet_grid(prey_history ~ predator_history) + 
+  labs(y="Prey density (OD600)", x="Days", color="Replicate") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw()
+
+#ggsave(filename=here("figs", "bac_OD600.svg"), device="svg", width=5, height=5, units="in")
+```
+
+What bacteria do without predators
+```{r}
+bac_high_only %>%
+  filter(predator_history == "no_predator") %>%
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=time_days, y=OD600)) +
+  geom_line(aes(group=replicate, color=replicate)) +
+  geom_point(aes(group=replicate, color=replicate), size=1) +
+  geom_smooth(method=loess, se=FALSE, color="black", size=0.5) +
+  facet_grid(prey_history ~ predator_history) + 
+  labs(y="Prey density (OD600)", x="Days", color="Replicate") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw()
+
+#ggsave(filename=here("figs", "bac_OD600.svg"), device="svg", width=5, height=5, units="in")
+```
+
+## Testing for trends in time series
+Using Mann-Kendall Trend test to test whether there is significant decreasing trend in ciliate concentration through time. We would hypothesize that as bacteria adapt to ciliates that the ciliate concentration would decrease. Because we are testing this hypothesis of decreasing ciliate concentration we use a one-sided test because we specifically want to know if ciliate concentrations are decreasing
+
+```{r}
+mk_results_cil <- cil_high_only %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(mk.test(.$cells_mL, alternative = "less", continuity = TRUE))))
+
+mk_results_bac <- bac_high_only %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(mk.test(.$OD600, alternative = "less", continuity = TRUE))))
+```
+
+mk_results_cil
+```{r echo=FALSE}
+mk_results_cil %>%
+  filter(p.value < 0.1)
+```
+
+mk_results_bac
+```{r echo=FALSE}
+mk_results_bac %>%
+  filter(p.value < 0.1)
+```
+
+# linear models from figure
+these are just linear model fits as in the plot above. None of them are significant for the effect of time_days
+
+```{r}
+lm_fits_cil <- cil_high_only %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(lm(formula = .$cells_mL ~ .$time_days,
+                               data = .))))
+lm_fits_bac <- bac_high_only %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(lm(formula = .$OD600 ~ .$time_days,
+                               data = .))))
+```
+
+```{r echo=FALSE}
+lm_fits_bac %>%
+  filter(p.value < 0.05 & term == ".$time_days")
+```
+
+# Predator densities at begining and end of experiment
+Check if predator density was higher/lower at end of experiment. Expectation is that predator density is lower at end for Ancestral ciliates but not for Evolved ciliates
+
+```{r}
+ttest_result_cil <- cil_high_only %>% 
+  filter(time_days %in% c(4, 60)) %>%
+  group_by(predator_history, prey_history) %>%
+  do(tidy(suppressWarnings(t.test(.$cells_mL ~ .$time_days, 
+                                  alternative = "two.sided", 
+                                  paired=TRUE,
+                                  data = .))))
+
+ttest_result_bac <- bac_high_only %>% 
+  filter(time_days %in% c(4, 60)) %>%
+  group_by(predator_history, prey_history) %>%
+  do(tidy(suppressWarnings(t.test(.$OD600 ~ .$time_days, 
+                                  alternative = "two.sided", 
+                                  paired=TRUE,
+                                  data = .))))
+
+```
+
+```{r echo=FALSE}
+ttest_result_bac
+```
+
+# Plot of predator densities
+```{r}
+cil_high_only %>% 
+  rename_prey() %>%
+  rename_predator() %>%
+  filter(time_days %in% c(4, 60)) %>%
+  ggplot(., aes(x=as.factor(time_days), y=cells_mL)) +
+  geom_boxplot() +
+  facet_grid(prey_history ~ predator_history) + 
+  labs(y="Predator density (cells/mL)", x="Days") +
+  scale_color_brewer(palette="Dark2") +
+  theme_bw()
+
+#ggsave(filename=here("figs", "ciliate_conc_endpoints.svg"), device="svg", width=5, height=5, units="in")
+```
+
+# Testing for time series 'stability' of ciliate density
+We are calculating variance in the time series to see if there is a difference between the 'stability' of evolved and naive bacteria. To do this we first must remove any monotonic trend present in the time series. Then we can calculate variances and use a GLM to test for differences in the variances. 
+
+## SCALE TIMESERIES
+Here we scale the below variables to have a mean of 0 and a std deviation of 1. This is actually not necessary and we don't use the scaled data.
+
+```{r}
+scld <- cil_high_only %>% 
+  arrange(predator_history, prey_history, replicate, time_days) %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  mutate(estimate_scale = scale(cells_mL)) %>%
+  ungroup()
+```
+
+## TESTING FOR TIME SERIES STATIONARITY
+A stationary process has the property that the mean, variance and autocorrelation structure do not change over time. Stationarity can be defined in precise mathematical terms, but for our purpose we mean a flat looking series, without trend, constant variance over time, a constant autocorrelation structure over time and no periodic fluctuations. 
+
+One problem with just doing a bulk correlation with data from time series is that the series may not be stationary.  We can only obtain obtain meaningful sample statistics such as means, variances, and correlations with other variables if a time series is stationary. For example, if the series is consistently increasing over time, the sample mean and variance will grow with the size of the sample, and they will always underestimate the mean and variance in future periods. And if the mean and variance of a series are not well-defined, then neither are its correlations with other variables. For this reason we need to be be cautious about trying to extrapolate regression models fitted to nonstationary data.
+
+## ADF TEST
+Here we need to try and tell whether are time series are stationary (ie are the values of different properties measured consistently increasing/decreasing over time. In statistics and econometrics, an augmented Dickey–Fuller test (ADF) tests the null hypothesis that a unit root is present in a time series sample. The alternative hypothesis is different depending on which version of the test is used, but is usually stationarity or trend-stationarity. It is an augmented version of the Dickey–Fuller test for a larger and more complicated set of time series models. The augmented Dickey–Fuller (ADF) statistic, used in the test, is a negative number. The more negative it is, the stronger the rejection of the hypothesis that there is a unit root at some level of confidence.
+
+```{r}
+adf_cil <- cil_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(adf.test(.$cells_mL)))) %>%
+  mutate(fdr=p.adjust(p.value, method="fdr"))
+
+adf_bac <- bac_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(adf.test(.$OD600)))) %>%
+  mutate(fdr=p.adjust(p.value, method="fdr"))
+```
+
+A p-value < 0.05 in adf.test() indicates that it is stationary. P-value > 0.05 means the time series has a unit-root and is probably _non stationary_. From the Augmented Dickey-Fuller Test we see that the majority of ciliate time series (9/12) and bacterial time series (11/12) predator/prey/replicate combination _are not stationary_ so it looks like we need to detrend them before proceeding. 
+
+```{r echo=FALSE}
+adf_cil %>% filter(fdr < 0.05)
+```
+
+## KPSS TEST
+The KPSS test is another test that predicts whether unit root is present which is a signal of non-stationarity. 
+
+```{r}
+kpss_cil <- cil_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(kpss.test(.$cells_mL)))) %>%
+  mutate(fdr=p.adjust(p.value, method="fdr"))
+
+kpss_bac <- bac_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  do(tidy(suppressWarnings(kpss.test(.$OD600)))) %>%
+  mutate(fdr=p.adjust(p.value, method="fdr"))
+```
+
+P-value > 0.05 means the time series has a unit-root and is probably _non stationary_. From the KPSS test we again see that the majority of ciliate time series (10/12) and bacteria time series (9/12) predator/prey/replicate combination _are not stationary_ so it looks like this supports the need to detrend them before proceeding. 
+
+```{r echo=FALSE}
+kpss_bac %>% filter(fdr < 0.05)
+```
+
+## DETRENDING
+first get rolling average to determine linear trend and -1 lag then subtract either the rolling mean or the -1 lag out of the time series to remove any monotonically increasing/decreasing trend from the data
+
+```{r}
+DT1_cil <- cil_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  mutate(cells_mL_lag = cells_mL - lag(cells_mL, k = 1)) %>%
+  mutate(ra=rollapply(cells_mL, 3, mean, align='right', fill=NA)) %>%
+  mutate(cells_mL_ra = cells_mL-ra) %>%
+  ungroup()
+
+DT1_bac <- bac_high_only %>% 
+  group_by(predator_history, prey_history, replicate) %>%
+  mutate(OD600_lag = OD600 - lag(OD600, k = 1)) %>%
+  mutate(ra=rollapply(OD600, 3, mean, align='right', fill=NA)) %>%
+  mutate(OD600_ra = OD600-ra) %>%
+  ungroup()
+```
+
+Plots of detrended time series for ciliates. Original, pre-detrended values are dashed lines
+```{r}
+DT1_cil %>% 
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=time_days)) +
+  geom_line(aes(y=cells_mL, group=replicate, color=replicate), linetype="dashed") +
+  geom_line(aes(y=cells_mL_lag, group=replicate, color=replicate)) +
+  #geom_line(aes(y=cells_mL_ra, group=replicate, color=replicate)) +
+  facet_grid(prey_history ~ predator_history) + 
+  scale_color_brewer(palette="Dark2") +
+  labs(y="Predator density (cells/mL)", x="Days", color="Replicate") +
+  theme_bw()
+```
+
+```{r}
+DT1_bac %>% 
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=time_days)) +
+  #geom_line(aes(y=OD600, group=replicate, color=replicate), linetype="dashed") +
+  geom_line(aes(y=OD600_lag, group=replicate, color=replicate)) +
+  #geom_line(aes(y=OD600_ra, group=replicate, color=replicate)) +
+  facet_grid(prey_history ~ predator_history) + 
+  scale_color_brewer(palette="Dark2") +
+  labs(y="Prey density (OD600)", x="Days", color="Replicate") +
+  theme_bw()
+```
+
+# VARIANCE
+Calculate the variance and standard deviation of the detrended time series for Ciliates
+```{r}
+DT1_cil_var <- DT1_cil %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  summarize(var=var(cells_mL_lag, na.rm = TRUE),
+            sd=sd(cells_mL_lag, na.rm = TRUE)) %>%
+  ungroup()
+
+DT1_bac_var <- DT1_bac %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  summarize(var=var(OD600_lag, na.rm = TRUE),
+            sd=sd(OD600_lag, na.rm = TRUE)) %>%
+  ungroup()
+```
+
+
+# PLOT VARIANCES
+Visually examine standard deviations from bacteria and ciliates.
+```{r}
+DT1_cil_var %>%
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=prey_history, y=sd)) +
+  geom_boxplot(alpha=0.5) +
+  geom_point(aes(color=replicate)) +
+  facet_grid( ~ predator_history) + 
+  scale_color_brewer(palette="Dark2") +
+  labs(y="Ciliate Standard Deviation", x="Prey evolutionary history", color="Replicate") +
+  theme_bw()
+```
+
+```{r}
+DT1_bac_var %>%
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=prey_history, y=sd)) +
+  geom_boxplot(alpha=0.5) +
+  geom_point(aes(color=replicate)) +
+  facet_grid( ~ predator_history) + 
+  scale_color_brewer(palette="Dark2") +
+  labs(y="Bacteria Standard Deviation", x="Predator evolutionary history", color="Replicate") +
+  theme_bw()
+```
+
+# TEST OF STANDARD DEVIATION DIFFERENCES
+For the ciliates at least, it looks that prey evolutionary history has an important effect on the "amplitude" of variation in the detrended time series. 
+```{r}
+factorize_prey <- function(.data){
+  mutate(.data,
+    prey_history = case_when(
+      .data$prey_history == "ANC" ~ 0,
+      .data$prey_history == "EVO" ~ 1
+    )
+  )
+}
+  
+factorize_predator <- function(.data){
+  mutate(.data,
+    predator_history = case_when(
+      .data$predator_history == "ANC" ~ 0,
+      .data$predator_history == "EVO" ~ 1,
+      .data$predator_history == "no_predator" ~ 2
+    )
+  )
+}
+```
+
+```{r}
+DT1_cil_var %>%
+  factorize_prey() %>% 
+  factorize_predator() %>%
+  group_by(predator_history) %>%
+  do(tidy(suppressWarnings(glm(formula = .$prey_history ~ .$sd,
+                               data = .,
+                               family = gaussian(link = "identity")))))
+```
+
+So there is a significantly effect of bacterial evolution on the predator density but only for evolved ciliates (slope of sd is 7.27E-5).
+
+```{r}
+DT1_bac_var %>%
+  factorize_prey() %>% 
+  factorize_predator() %>%
+  group_by(predator_history) %>%
+  do(tidy(suppressWarnings(lm(.$sd ~ .$prey_history,
+                               data = .))))
+```
+
+Nothing significant for bacteria as expected...
+
+## Relationship between the variability of predator density and initial prey defense as a function of predator/prey evolutionary history.
+
+Read and format trait data
+```{r message=FALSE, warning=FALSE}
+strains <- tibble::tribble(
+  ~strainID,             ~genus,        ~species,
+  "HAMBI-0097",    "Acinetobacter",       "lwoffii",
+  "HAMBI-1972",        "Aeromonas",        "caviae",
+  "HAMBI-0105",    "Agrobacterium",   "tumefaciens",
+  "HAMBI-2160",       "Bordetella",         "avium",
+  "HAMBI-0262",    "Brevundimonas",       "bullata",
+  "HAMBI-1988",     "Chitinophaga",        "sancti",
+  "HAMBI-1287",      "Citrobacter",        "koseri",
+  "HAMBI-0403",        "Comamonas",  "testosteroni",
+  "HAMBI-2164",      "Cupriavidus",       "necator",
+  "HAMBI-1279",           "Hafnia",         "alvei",
+  "HAMBI-1299",         "Kluyvera",    "intermedia",
+  "HAMBI-3237",       "Microvirga",   "lotononidis",
+  "HAMBI-2792",        "Moraxella",         "canis",
+  "HAMBI-1292",       "Morganella",      "morganii",
+  "HAMBI-1923",         "Myroides",      "odoratus",
+  "HAMBI-3031",         "Niabella",  "yanshanensis",
+  "HAMBI-2159", "Paraburkholderia",   "caryophylli",
+  "HAMBI-2494", "Paraburkholderia",   "kururiensis",
+  "HAMBI-2443",       "Paracoccus", "denitrificans",
+  "HAMBI-1977",      "Pseudomonas",  "chlororaphis",
+  "HAMBI-0006",      "Pseudomonas",        "putida",
+  "HAMBI-1896", "Sphingobacterium",  "spiritivorum",
+  "HAMBI-1842",      "Sphingobium",    "yanoikuyae",
+  "HAMBI-2659", "Stenotrophomonas",   "maltophilia"
+)
+
+auc <- read_tsv(here("processed_spreadsheets", "ANCvEVO_fitness_v_predator.tsv"))
+gr <- read_tsv(here("processed_spreadsheets", "ANCvEVO_maxgrowth_rates_nopredator.tsv"))
+
+defense <- auc %>%
+  group_by(strain, prey_history) %>%
+  summarize(nopred=mean(auc_e_no_pred, na.rm = TRUE), 
+            pred=mean(auc_e_pred, na.rm = TRUE)) %>%
+  mutate(D = pred/nopred) %>%
+  #select(-pred, -nopred) %>%
+  ungroup()
+
+traits <- left_join(defense, gr, by = c("strain", "prey_history")) #%>%
+  #gather(trait, value, D, growthrate)
+
+traits %>%
+  rename_prey() %>%
+  ggplot(., aes(x=D, y=growthrate)) +
+  geom_point(aes(color=prey_history)) +
+  #facet_grid(prey_history ~ .) +  
+  scale_color_brewer(palette="Dark2") +
+  #labs(y="Ciliate Standard Deviation", x="Prey evolutionary history", color="Replicate") +
+  theme_bw()
+
+
+traits_smry <- left_join(defense, gr, by = c("strain", "prey_history")) %>% 
+  gather(trait, value, D, growthrate) %>%
+  group_by(prey_history, trait) %>%
+  summarise(trait_med=median(value, na.rm=TRUE), 
+            trait25=quantile(value, probs=c(0.25), na.rm=TRUE),
+            trait75=quantile(value, probs=c(0.75), na.rm=TRUE)) %>%
+  ungroup()
+
+DT1_cil_smry <- DT1_cil_var %>% 
+  group_by(predator_history, prey_history) %>%
+  summarise(sd_med=median(sd, na.rm=TRUE), 
+            sd25=quantile(sd, probs=c(0.25), na.rm=TRUE),
+            sd75=quantile(sd, probs=c(0.75), na.rm=TRUE)) %>%
+  ungroup()
+```
+
+Plotting
+```{r}
+left_join(DT1_cil_smry, traits) %>%
+  rename_prey() %>%
+  rename_predator() %>%
+  ggplot(., aes(x=value, y=sd_med)) +
+  geom_point(aes(color=prey_history, shape=predator_history)) +
+  facet_grid( ~ trait) + 
+  scale_color_brewer(palette="Dark2") +
+  #labs(y="Ciliate Standard Deviation", x="Prey evolutionary history", color="Replicate") +
+  theme_bw()
+```
+
+## GLM versions unecessary
+```{r}
+DT1_bac_var %>%
+  factorize_prey() %>% 
+  factorize_predator() %>%
+  group_by(predator_history) %>%
+  do(tidy(suppressWarnings(glm(formula = .$prey_history ~ .$sd,
+                               data = .,
+                               family = gaussian(link = "identity")))))
+```
+
+```{r}
+DT1_cil_var %>%
+  factorize_prey() %>% 
+  factorize_predator() %>%
+  group_by(predator_history) %>%
+  do(tidy(suppressWarnings(lm(.$sd ~ .$prey_history,
+                               data = .))))
+```
+
+
+
+
+
+
+# TEST OF VARIANCE DIFFERENCES
+Test whether variances of co-evolved and naive are statistically different using F test. F test is problematic because it assumes normality which this data is not... We can try anyway
+
+```{r}
+DT1_ftest <- DT1 %>%
+  select(time_days, predator_history, prey_history, replicate, cells_mL_lag) %>%
+  drop_na() %>%
+  spread(replicate, cells_mL_lag) %>%
+  group_by(predator_history, prey_history, replicate) %>%
+  
+  do(tidy(suppressWarnings(kpss.test(.$cells_mL)))) %>%
+  mutate(fdr=p.adjust(p.value, method="fdr"))
+
+do(tidy(suppressWarnings(var.test(.$`Co-Evolved bacteria`, .$`Naive bacteria`))))
+  
+  select(predator, replicate, prey, var) %>%
+  spread(prey, var) %>%
+  do(tidy(suppressWarnings(var.test(.$`Co-Evolved bacteria`, .$`Naive bacteria`))))
+```
+
+Test whether variances of co-evolved and naive are statistically different using generalized linear models. This is probably the best approach because it does not require normality. Require you choose the correct Family and link function.
+
+Examining the distribution of these variance values appears that distribution is likely gamma. When modeling the variance of the Gaussian distribution it is common to use inverse link function for the Gamma model.
+
+Useful links [here](https://en.wikipedia.org/wiki/Gamma_distribution) and [here](https://en.wikipedia.org/wiki/Inverse-gamma_distribution#Derivation_from_Gamma_distribution)
+
+```{r}
+ggplot(t5) + 
+  geom_density(aes(x=var)) + 
+  facet_wrap(predator~ prey, scales="free")
+```
+
+# GLMS BACKGROUND
+
+Some useful refresher info [here](https://stats.idre.ucla.edu/r/dae/logit-regression/) and [here](https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-how-do-i-interpret-odds-ratios-in-logistic-regression/)
+
+Also see this nice Stack overflow [answer](https://stats.stackexchange.com/a/86375)
+
+and this nifty tidyverse [glm workflow](https://github.com/riinuots/tidyforest) 
+
+and if you don't know anything about GLMs this seems like a [nice quick hands on tutorial](http://psych.colorado.edu/~carey/qmin/qminchapters/qmin09-glmintro.pdf)
+
+Useful if you forget (like I always do) what R functions to call to get the predicted probabilities from the model
+[link1](https://www.theanalysisfactor.com/r-tutorial-glm1/) [link2](https://www.theanalysisfactor.com/r-glm-model-fit/) [link3](https://www.theanalysisfactor.com/r-glm-plotting/) [link4](https://www.theanalysisfactor.com/generalized-linear-models-glm-r-part4/)
+
+```{r}
+t7 <- t5 %>%
+  group_by(dilution, prey) %>%
+  do(tidy(suppressWarnings(glm(formula = .$coefvar ~ .$predator,
+                               data = .,
+                               family = Gamma(link = "inverse")))))
+```
+
+filter model results to only the significant ones
+```{r}
+t8 <- t7 %>% 
+  filter(term != '(Intercept)') %>%
+  filter(p.value <= 0.05)
+```
+
+## PLOT GLM results 
+```{r}
+t5 %>%
+  mutate(myint=interaction(prey, predator)) %>%
+  mutate(myint=factor(myint, levels=c("Naive bacteria.Naive ciliates", 
+                                      "Naive bacteria.Co-Evolved ciliates",
+                                      "Co-Evolved bacteria.Naive ciliates",
+                                      "Co-Evolved bacteria.Co-Evolved ciliates"))) %>%
+  ggplot(aes(x=myint, y=coefvar)) +  #, group=interaction(replicate, prey)
+  geom_point(aes(color=myint, shape=predator),  
+             position=position_dodge2(width = 0.5, preserve = "single", 
+                                      padding = 0.0), size=4) +
+  #facet_wrap(.~, scales="free") + 
+  scale_color_brewer(palette="Dark2") +
+  labs(x="", y="Timeseries coefficient of variation", color="", shape="") +
+  theme_bw() #+
+  #theme(panel.grid.major.x = element_blank(),
+  #      panel.grid.minor.x = element_blank(),
+  #      panel.grid.major.y = element_blank(),
+  #      panel.grid.minor.y = element_blank(),
+  #      axis.text.x=element_blank())
+ggsave(filename=here("figs", "coefvar_lowdisturbance.svg"), device="svg", width=9, height=4, units="in")
+```
+
+## this version plots with the GLM fit. 
+kind of hacky but it works...
+```{r}
+t6 <- t5 %>%
+  #filter(dilution != "Intermediate disturbance") %>%
+  filter(predator != "No ciliates") %>%
+  mutate(predator1=ifelse(predator=="Naive ciliates", 0, 1))
+
+ggplot(t6, aes(x=predator1, y=coefvar)) +  #, group=interaction(replicate, prey)
+  geom_smooth(aes(x=predator1, y=coefvar), method="glm", formula=y ~ x ) +
+  geom_point(aes(color=predator, shape=predator),  
+             position=position_dodge2(width = 0.5, preserve = "single", 
+                                      padding = 0.05), size=4) +
+  facet_grid(~ prey, scales="free") + 
+  scale_color_brewer(palette="Dark2") +
+  scale_x_continuous(breaks=t6$predator1, labels=t6$predator) + 
+  labs(x="", y="Detrended time series variance", color="Bacteria evolution") +
+  theme_bw() +
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank(),
+        panel.grid.minor.y = element_blank())
+ggsave(filename=here("figs", "divesity_variance.svg"), device="svg", width=7, height=6, units="in")
+```
+
+## plotted with all data
+```{r}
+ggplot(t5, aes(x=prey, y=var)) + 
+  geom_point(aes(color=replicate, shape=predator, group=predator), 
+             position=position_dodge2(width = 0.5, preserve = "single", 
+                                      padding = 0.05), size=4) +
+  facet_wrap(measure ~ dilution, scales="free_y") + 
+  scale_color_brewer(palette="Dark2") +
+  labs(x="Day", y="lagged difference scaled value", color="Integrated community\ngrowth rate") +
+  theme_bw()
+```

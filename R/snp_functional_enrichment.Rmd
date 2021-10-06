@@ -110,7 +110,7 @@ At the most fine-grained functional level, we also searched for signatures of pa
 
 
 ## Nucleotide multiplicity.
-For each site, we defined them multiplicity, $m_{i}$, as the number of populations with a point mutation detected at that site.  We calculated the multiplicity separately for both the mutator and nonmutator populations, so that the multiplicity could range from 1 to 6. Each mutation was then assigned a multiplicity score according to the site in which it occurred, and the distribution of these multiplicity scores is shown in Extended Data Fig. 3.
+For each site, we defined them multiplicity, $m_{i}$, as the number of populations with a point mutation detected at that site.  We calculated the multiplicity separately for both the mutator and nonmutator populations, so that the multiplicity could range from 1 to 3. Each mutation was then assigned a multiplicity score according to the site in which it occurred.
 
 ```{r}
 df.final %>%

@@ -1,4 +1,4 @@
-# HELPERS -----------------------------------------------------------------
+# Sample from multinomial -------------------------------------------------
 
 # sample from multinomial the total number of mutations with prob
 # weighted the same as the n_population/n_total
@@ -7,18 +7,6 @@ samp_sizes = function(nmutations, population_num, population_probs){
   names(rsizes) = LETTERS[seq( from = 1, to = population_num )]
   return(rsizes)
 }
-
-# ggplot theme
-mytheme = theme(
-  panel.grid = element_blank(),
-  panel.border = element_blank(),
-  panel.background = element_blank(),
-  axis.line.x = element_line(color = "black"),
-  axis.line.y = element_line(color = "black"),
-  legend.title = element_blank(),
-  legend.background = element_blank(),
-  legend.key=element_blank()
-)
 
 # GSCORES -----------------------------------------------------------------
 

@@ -1,0 +1,392 @@
+---
+title: "Modeling effects of _Pseudomonas_ evolution on prey density"
+output: 
+  html_notebook
+---
+
+<!-- output:  -->
+<!--   github_document: -->
+<!--     toc: yes -->
+<!--     toc_depth: 2 -->
+<!--     fig_width: 7 -->
+<!--     fig_height: 5 -->
+<!--     dev: png -->
+<!--     keep_html: yes -->
+<!--     html_preview: yes -->
+    
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(here)
+library(tidyverse)
+library(fitdistrplus)
+```
+
+# READ AND FORMAT 
+We started each bacterial species at 10<sup>6<sup/> cells per mL except for 
+_Pseudomonas_ which we inoculated at 10<sup>7<sup/> cells per mL.
+
+[useful post](https://stats.stackexchange.com/a/127559) for making dummy interaction variables
+```{r message=FALSE, warning=FALSE}
+metadata <- read_tsv(here("data", "metadata.tsv"), col_types="cfffffff") %>%
+  mutate(pseudomonas_hist=factor(pseudomonas_hist, levels=c("ancestral", "coevolved")),
+         tetra_hist=factor(tetra_hist, levels=c("no_tetra", "coevolved")))
+
+bac <- read_tsv(here("data", "ppy_colony_counts.tsv"), col_types="ccdddddd") %>% 
+  dplyr::select(-platetype) %>% 
+  rowwise() %>%
+  mutate(`0`= rnorm(1, mean=2.9e+07+1e+07, sd=1e6)) %>%
+  ungroup() %>%
+  gather(day, value, -sample) %>% 
+  mutate(day=as.numeric(day)) 
+```
+
+```{r}
+set.seed(3427)
+#setup the categorical vars
+bac1 <- left_join(bac, metadata, by="sample") %>% 
+  filter(pseudomonas_hist %in% c("ancestral", "coevolved")) %>%
+  filter(tetra_hist %in% c("coevolved", "no_tetra")) %>%
+   mutate(pred=ifelse(str_detect(tetra_hist, "coevolved"), "predation", "none"),
+         evo=ifelse(str_detect(pseudomonas_hist, "coevolved"), "evolution", "none"),
+         pred_evo=ifelse(str_detect(tetra_hist, "coevolved") & 
+                           str_detect(pseudomonas_hist, "coevolved"), "interaction", "none")) %>%
+  group_by(pred, evo, replicate) %>%
+  mutate(id=dplyr::cur_group_id()) %>%
+  ungroup()
+
+# scale response var
+# there is a detection limit for ciliates at about 1000 per mL. Any lower than that and noise takes over so you get lots of zeros and weird low values. Here we are just randomly sampling from normal distribution for all counts below 1000
+bac2 <- bac1 %>%
+  #group_by(id) %>%
+  #rowwise() %>%
+  #mutate(value2=ifelse(value < 1000, rnorm(1, mean=1000, sd=500), value)) %>%
+  #ungroup() %>%
+  #mutate(value2=ifelse(value2 < 0, 300, value2)) %>%
+  mutate(vallog=log10(value),    # for Gaussian
+         valsqrt=(value)^(1/2), 
+         count=ceiling(value),     # for beta binomial
+         recoveryonset=day-43) %>%
+  mutate(countred=ceiling(count/100),
+         vallogscale=scale(vallog)) %>%
+  ungroup()
+
+
+# finalize data
+bac3 <- bac2 %>%
+  dplyr::select(pred, evo, pred_evo, recoveryonset, day, id, count, countred, vallog, vallogscale, valsqrt) %>%
+  arrange(id, day) %>%
+  mutate(pred=as.factor(pred),
+         evo=as.factor(evo),
+         pred_evo=as.factor(pred_evo),
+         recoveryonset=as.numeric(recoveryonset),
+         day=as.numeric(day), 
+         id=as.factor(id),
+         count=as.numeric(count),
+         vallogscale=as.numeric(vallogscale)) %>%
+  as.data.frame()
+
+saveRDS(bac3, here::here("bin", "cluster", "bac3.rds"))
+```
+
+```{r}
+bac3 %>%
+  pivot_longer(cols=c(vallogscale, vallog, valsqrt, countred, count)) %>%
+  ggplot() + 
+  geom_line(aes(x=day, y=value, group=id, color=pred_evo, linetype=pred)) +
+  facet_wrap(.~ name, scales="free_y") + 
+  theme_bw()
+```
+
+# BEST PROBABILITY DISTRIBUTIONS
+
+[This is a good, short explanation](https://stats.stackexchange.com/a/303592) 
+for choosing the probability distribution. 
+
+The two most relevant options in this case are NB and gaussian:
+1. Gaussian: (a.k.a. normal distribution).
+ - Continuous
+ - Unbounded
+2. Negative binomial
+ - Continuous
+ - Bounded, outcome is non-negative
+
+```{r message=FALSE, warning=FALSE}
+fit.n <- fitdist(bac3$vallogscale, "norm")
+fit.ln <- fitdist(bac3$count, "lnorm")
+fit.nb <- fitdist(bac3$count, "nbinom")
+```
+
+### Histograms and theoretical densities
+```{r}
+denscomp(fit.n, legendtext="scaled-Gaussian", probability = T)
+```
+
+```{r}
+denscomp(fit.ln, legendtext="Log-gaussian", probability = T)
+```
+
+### Q-Q plots
+```{r}
+qqcomp(fit.n, legendtext="Scaled-gaussian")
+```
+
+```{r}
+qqcomp(fit.ln, legendtext="Log-gaussian", xlogscale = T, ylogscale = T)
+```
+
+### Empirical and theoretical CDFs
+```{r}
+cdfcomp(fit.n, legendtext="Scaled-gaussian")
+```
+
+```{r}
+cdfcomp(list(fit.ln,fit.nb),legendtext=c("Log-gaussian","Neg Binom"))
+```
+
+### Theoretical/empirical probs
+```{r}
+ppcomp(fit.n, legendtext="Scaled-gaussian")
+```
+
+```{r}
+ppcomp(fit.ln, legendtext="Log-gaussian")
+```
+
+Will use gaussian with a log10 transform because it makes computation with Gaussian process regression more computationally straightforward and hence faster.
+
+# MODELING
+```{r}
+library(lgpr)
+```
+
+## DEFINE PRIORS
+ 
+### WARP STEEPNESS
+Warp needs to be pretty steep since the change happens within 5 days or so. 
+
+Setting mu to -0.1 and sigmap to 0.2 seems to achieve this effect
+```{r}
+num_draws <- 300
+mu_wrp <- -0.1
+sigma_wrp <- 0.2
+
+r <- range(bac3$recoveryonset, na.rm = TRUE)
+
+# Prior draws
+wrp_draws <- stats::rlnorm(num_draws, mu_wrp, sigma_wrp)
+
+# Plot corresponding input warping functions
+# - this function is not exported from lgpr so we need to use triple colons :::
+# - alpha here is line opacity, not a GP parameter
+lgpr:::plot_inputwarp(wrp_draws, seq(r[1], r[2], by = 1), alpha = 0.1)
+```
+
+## GAUSSIAN
+run on cluster
+```{r}
+lgpinput <- bac3 %>% 
+  dplyr::select(-count, -countred) %>%
+  dplyr::rename(y=vallogscale)
+
+my_prior.g <- list(
+              wrp = log_normal(-0.1, 0.2)
+              )
+
+fit.g <- lgp(y ~ gp(day) + zs(id)*gp(day) + categ(pred)*gp(day) + categ(evo)*gp(day) + 
+                categ(pred_evo)*gp(day) + gp_vm(recoveryonset),
+              lgpinput, 
+              likelihood = "gaussian",
+              prior = my_prior.g,
+              verbose = TRUE,
+              refresh = 500,
+              chains = 4,
+              cores = 4,
+              control = list(adapt_delta = 0.95),
+              iter = 200)
+```
+
+### CATEGORICAL KERNELS FOR EVOLUTION, PREDATION, PRED_EVO
+Read in the saved Stan object if coming back to this later
+```{r}
+fit.g <- readRDS(here::here("output", "fit-bac-cat-gs.rds"))
+```
+
+#### CHECK POSTERIOR
+```{r}
+plot_draws(fit.g, type = 'dens')
+```
+
+#### COMPONENT RELEVANCES
+```{r}
+data.frame(relevances(fit.g, reduce = mean)) %>% 
+  rownames_to_column(var="variable") %>% tibble()
+```
+
+```{r}
+lgpr:::relevances.default.all(fit.g) %>% tibble() %>%
+  pivot_longer(everything()) %>%
+  ggplot(aes(x=name, y=value)) +
+    geom_violin(scale="width")
+```
+
+```{r}
+select(fit.g, threshold = 0.95)
+```
+
+```{r}
+threshold_density <- function(x) {stats::dbeta(x, 20, 2)}
+s <- select.integrate(fit.g, p = threshold_density)
+print(s$expected)
+```
+
+```{r}
+t <- seq(1, 55, by = 1)
+x_pred <- new_x(lgpinput, t, x="day", x_ns = "recoveryonset")
+p <- pred(fit.g, x_pred, reduce = mean)
+plot_pred(fit.g, x = x_pred, pred = p, t_name="day", group_by=c("id"))
+```
+
+```{r}
+plot_f(fit.g, x = x_pred, pred = p, t_name="day",  color_by="pred_evo")
+```
+
+```{r}
+plot_components(fit.g,
+                x = x_pred, 
+                t_name = "day",
+                group_by="id", 
+                pred = p,
+                color_by = c(NA, NA, "pred", "evo", "pred_evo", NA, "pred_evo"),
+                #color_by="pred_evo",
+                ylim = c(-3,3))
+```
+
+### ZERO-SUM KERNELS FOR EVOLUTION, PREDATION, PRED_EVO
+
+Read in the saved Stan object if coming back to this later
+```{r}
+fit.g1 <- readRDS(here::here("output", "fit-bac-zs-gs.rds"))
+```
+
+#### CHECK POSTERIOR
+```{r}
+plot_draws(fit.g1, type = 'dens')
+```
+
+#### COMPONENT RELEVANCES
+```{r}
+rel <- lgpr:::relevances.default.all(fit.g1) %>% tibble() %>%
+  pivot_longer(everything()) %>%
+  mutate(measure="bacteria")
+
+thresh <- select(fit.g1, threshold = 0.95) %>% rownames_to_column(var="name") %>% tibble()
+
+relf <- left_join(rel, thresh)
+
+saveRDS(relf, here::here("output", "relevance_bac.rds"))
+
+ggplot(relf, aes(x=name, y=value, fill=Component)) +
+    geom_violin(scale="width")
+```
+
+```{r}
+data.frame(relevances(fit.g1, reduce = mean)) %>% 
+  rownames_to_column(var="variable") %>% tibble()
+```
+
+```{r}
+select(fit.g1, threshold = 0.95)
+```
+
+```{r}
+threshold_density <- function(x) {stats::dbeta(x, 20, 2)}
+s <- select.integrate(fit.g1, p = threshold_density)
+print(s$expected)
+```
+
+```{r}
+t <- seq(1, 55, by = 1)
+x_pred <- new_x(lgpinput, t, x="day", x_ns = "recoveryonset")
+p <- pred(fit.g1, x_pred, reduce = mean)
+plot_pred(fit.g1, x = x_pred, pred = p, t_name="day", group_by=c("id"))
+```
+
+```{r}
+plot_f(fit.g1, x = x_pred, pred = p, t_name="day",  color_by="pred_evo")
+```
+
+```{r}
+plot_components(fit.g1,
+                x = x_pred, 
+                t_name = "day",
+                group_by="id", 
+                pred = p,
+                color_by = c(NA, NA, "pred", "evo", "pred_evo", NA, "pred_evo"),
+                #color_by="pred_evo",
+                ylim = c(-3,3))
+```
+
+# DATA FOR PLOTTING
+
+## SUM FUNCTION PLUS DATA ON ORIGINAL DATA SCALE
+```{r}
+input <- lgpr:::plot_pred.create_input(fit.g1, p, x_pred, draws, reduce, "id", "day")
+
+data <- lgpr:::create_plot_df(fit.g1, x="day") %>%
+  mutate(y=10^y) %>% dplyr::rename(obs=y)
+
+rib <- lgpr:::plot_pred.create.df_ribbon(fit.g1, p, lgpr:::dollar(input, "df_base"), 2) %>%
+  mutate(upper=10^upper,
+         lower=10^lower)
+
+lines <- lgpr:::plot_pred.create.df_line(fit.g1, p, lgpr:::dollar(input, "df_base")) %>%
+  mutate(y=10^y)
+
+bacfinal <- left_join(lines, rib) %>%
+  left_join(., data) %>%
+  mutate(measure="bacterial") %>%
+  left_join(., distinct(dplyr::select(lgpinput, pred, evo, pred_evo, id)))
+
+saveRDS(bacfinal, here::here("output", "data_bac.rds"))
+
+ggplot(bacfinal, aes(x=day, group=id)) + 
+  geom_ribbon(aes(ymax=upper, ymin=lower, fill=pred), alpha=0.1) +
+  geom_line(aes(y=y, color=pred)) +
+  geom_point(aes(y=obs, color=pred)) +
+  scale_y_log10() +
+  #facet_wrap(~id) +
+  theme_bw()
+```
+
+## INDIVIDUAL COMPONENTS
+```{r}
+# 1. time is shared
+vardata1 <- left_join(lgpr:::plot_f.create.df_ribbon(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=1, 2),
+                 lgpr:::plot_f.create.df_line(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=1)) %>%
+  mutate(variable="day") %>%
+  dplyr::select(-id) %>% dplyr::distinct()
+
+# 3. predation
+vardata3 <- left_join(lgpr:::plot_f.create.df_ribbon(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=3, 2),
+                 lgpr:::plot_f.create.df_line(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=3)) %>%
+  mutate(variable="pred") %>%
+  left_join(., distinct(dplyr::select(lgpinput, pred, id))) %>%
+  dplyr::select(-id) %>% dplyr::distinct()
+
+# 6. recovery is shared
+vardata6 <- left_join(lgpr:::plot_f.create.df_ribbon(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=6, 2),
+                 lgpr:::plot_f.create.df_line(fit.g1, p, lgpr:::dollar(input, "df_base"), comp_idx=6)) %>%
+  mutate(variable="recovery") %>%
+  dplyr::select(-id) %>% dplyr::distinct()
+
+vardataf <- bind_rows(vardata1, vardata3, vardata6)
+
+saveRDS(vardataf, here::here("output", "vars_bac.rds"))
+
+ggplot(vardataf, aes(x=day, y=y, ymax=upper, ymin=lower, fill=pred, color=pred)) + 
+  geom_ribbon(alpha=0.25) +
+  geom_line() +
+  facet_wrap(~variable) +
+  theme_bw()
+```
+
+
