@@ -2,4 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+README.html
 data/lgprOutput/**
+data/rnaseq/**
+dataRaw/rnaseq/**
