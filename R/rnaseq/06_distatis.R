@@ -100,6 +100,7 @@ clusters <-
     clust_45$Best.partition %>% 
       enframe(name = "sample", value = "cluster") %>% mutate(days = 45)
   ) %>%
+  mutate(days=factor(days)) %>%
   left_join(., compromise_df) %>%
   mutate(cluster = factor(cluster))
 

@@ -6,14 +6,12 @@ rlogifySTC <-
            species,
            metadata,
            rnatotals,
-           ntop = 500,
-           design = "~ summary_cat") {
+           ntop = 500) {
     print(paste0("Working on ", species, "..."))
     
     # needs to be used with imap or equivalent because requires species name in
     # the final formula
-    design <- paste("~ summary_cat", "+", species)
-    #design <- "~ summary_cat"
+    design <- paste("~", species, "+", "summary_cat")
     
     # make summary_cat a factor
     metadata$summary_cat <- factor(metadata$summary_cat)
@@ -65,8 +63,7 @@ rlogifyASC <-
            species,
            metadata,
            rnatotals,
-           ntop = 500,
-           design = "~ summary_cat") {
+           ntop = 500) {
     # needs to be used with imap or equivalent because requires species name in
     # the final formula
     print(paste0("Working on ", species, "..."))
@@ -147,15 +144,20 @@ deseqifySTC <-
   function(data,
            species,
            metadata,
-           rnatotals,
-           design = "~ summary_cat") {
+           rnatotals, 
+           overall = FALSE) {
     print(paste0("Working on ", species, "..."))
     
     # needs to be used with imap or equivalent because requires species name in
     # the final formula
-    design <- paste("~ summary_cat", "+", species)
-    #design <- "~ summary_cat"
     
+    # + pseudomonas_hist:predation
+    if ( overall == TRUE ) {
+      design <- paste("~", species, "+", "pseudomonas_hist + predation")
+    }  else {
+      design <- paste("~", species, "+", "summary_cat")
+    }
+  
     # make summary_cat a factor
     metadata$summary_cat <- factor(metadata$summary_cat)
     
@@ -280,6 +282,20 @@ boot2df <- function(distatis_comp_boot,
   ) %>% left_join(., rownames_to_column(metadata, var = "sample"))
 }
 
+# 09_deseq_counts.R
+get_deseq_counts <- function(dds, species) {
+  # needs to be used with imap or equivalent because requires species name in
+  # the final formula
+  print(paste0("Working on ", species, "..."))
+  
+  as_tibble(counts(dds, normalized=T), rownames = "Geneid") %>%
+    pivot_longer(cols=-Geneid, names_to="sample", values_to = "normcounts") %>%
+    group_by(Geneid) %>%
+    mutate(zscore=(normcounts-mean(normcounts))/sd(normcounts)) %>%
+    ungroup() %>%
+    mutate(genome = species)
+}
+
 # 09_deseq_constrasts.R
 get_deseq_results <- function(dds, species, contrast) {
   # needs to be used with imap or equivalent because requires species name in
@@ -308,14 +324,18 @@ get_deseq_results_shrunk <-
       print(paste0("Using Coefficient ", coef, "..."))
       
       as_tibble(lfcShrink(dds, coef = coef, type = "apeglm"), rownames = "Geneid") %>%
-        mutate(genome = species)
+        mutate(genome = species) %>%
+        mutate(padj=if_else(is.na(padj), 0.99, padj),
+               coefficient = {{ coef }})
     } else {
       coef <- paste(contrast[1], contrast[2], "vs", contrast[3], sep = "_")
       
       print(paste0("Using Coefficient ", coef, "..."))
       
       as_tibble(lfcShrink(dds, coef = coef, type = "apeglm"), rownames = "Geneid") %>%
-        mutate(genome = species)
+        mutate(genome = species) %>%
+        mutate(padj=if_else(is.na(padj), 0.99, padj),
+               coefficient = {{ coef }})
     }
     
   }
@@ -324,12 +344,12 @@ get_deseq_results_shrunk <-
 enrichfun <- function(deseq_res_split, path2gene, path2name) {
   
   genome    <- unique(deseq_res_split$genome)
-  predation <- unique(deseq_res_split$predation)
+  coefficient <- unique(deseq_res_split$coefficient)
   day       <- unique(deseq_res_split$days)
   GENES     <- deseq_res_split$Geneid
   T2G       <- path2gene %>% dplyr::filter(str_detect(Geneid, {{ genome }} ))
   
-  print(paste("Working on genome", genome, "with condition", predation, "on day", day))
+  print(paste("Working on genome", genome, "with condition", coefficient, "on day", day))
   
   x <- try(enricher(
     GENES,
@@ -343,7 +363,7 @@ enrichfun <- function(deseq_res_split, path2gene, path2name) {
     mydf <- as_tibble(x) %>%
       dplyr::mutate(enrichFactor = Count / as.numeric(sub("/\\d+", "", BgRatio))) %>%
       dplyr::mutate(genome = {{ genome }},
-                    predation = {{ predation }},
+                    coefficient = {{ coefficient }},
                     days = {{ day }} ) %>%
       tidyr::separate_rows(`geneID`, sep = "/") %>%
       dplyr::rename(Geneid = geneID)

@@ -123,6 +123,12 @@ meta_04 <- metadata %>%
   filter(days == 4, !(sample %in% c("04AYC", "04CNC"))) %>%
   left_join(., sp_abund_04) %>%
   arrange(sample) %>%
+  mutate(
+    days = factor(days, levels = c(4, 45)),
+    pseudomonas_hist = factor(pseudomonas_hist, levels = c("ancestral", "coevolved")),
+    predation = factor(predation, levels = c("no", "yes")),
+    summary_cat = factor(summary_cat)
+  ) %>% 
   column_to_rownames(var = "sample") %>%
   as.data.frame()
 
@@ -130,7 +136,12 @@ meta_45 <- metadata %>%
   filter(days == 45, !(sample %in% c("04AYC", "04CNC"))) %>%
   left_join(., sp_abund_45) %>%
   arrange(sample) %>%
-  arrange(sample) %>%
+  mutate(
+    days = factor(days, levels = c(4, 45)),
+    pseudomonas_hist = factor(pseudomonas_hist, levels = c("ancestral", "coevolved")),
+    predation = factor(predation, levels = c("no", "yes")),
+    summary_cat = factor(summary_cat)
+  ) %>% 
   column_to_rownames(var = "sample") %>%
   as.data.frame()
 
@@ -138,7 +149,6 @@ meta_45 <- metadata %>%
 mycols19 <- colorRampPalette(RColorBrewer::brewer.pal(9, "Set1"))(length(genome_order_full)-1)
 mycols19 <- append(mycols19, "#000000", after=1)
 names(mycols19) <- genome_order_full
-
 
 # SAVE --------------------------------------------------------------------
 

@@ -88,7 +88,7 @@ $S(m) \approx \sum\limits_{n \geq m} \frac{n}{n_{tot}} \times L_{tot} \times \fr
 
 ### Parallelism at the gene-level
 
-If selection pressures and mutation rates did not vary between genes, the number of mutations in each gene should be proportional to the target size.  While it is difficult to estimate the local target size for beneficial, deleterious, and neutral mutations in any particular gene, we assume that gene length is a primary driver of the target size.  Similar to our nucleotide-level analysis above, we then define a multiplicity for each gene according to
+If selection pressures and mutation rates did not vary between genes, the number of mutations in each gene should be proportional to the target size. While it is difficult to estimate the local target size for beneficial, deleterious, and neutral mutations in any particular gene, we assume that gene length is a primary driver of the target size. Similar to our nucleotide-level analysis above, we then define a multiplicity for each gene according to
 
 $m_{i} = n_{i} \times \frac{\bar{L}}{L_{i}}$
 

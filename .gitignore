@@ -6,3 +6,4 @@ README.html
 data/lgprOutput/**
 data/rnaseq/**
 dataRaw/rnaseq/**
+sra/**
