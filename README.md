@@ -3,45 +3,41 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This is project contains data from the HAMBI species gene
-expression project. 30 HAMBI bacterial species were grown with
-either a low trait-diversity, ancestral Pseudomonas fluorescens SBW25
-or a local adapted population of SBW25 that had been co-cultured with 
-a *Tetrahymena* ciliate. These two treatments were conducted in the
-presence and absence of the ciliate. The experiment duraction was 55 days. No fresh media was added, so the bacteria and ciliate were growing 
+This is project contains data from the HAMBI species gene expression project. 30 HAMBI bacterial species were grown with either a low trait-diversity, ancestral Pseudomonas fluorescens SBW25 or a coevolved population of SBW25 that had been co-cultured with a *Tetrahymena* ciliate. These two treatments were conducted in the presence and absence of the coevolved ciliate. The experiment duration was 55 days. No fresh media was added, so the bacteria and ciliate were growing 
 in a closed system without new nutrient inputs. RNAseq samples were collectd on days 4 and 45. 16S amplicon samples were collected on days 4, 41, and 45. Ciliate counts, bacterial CFUs, and community ATP concentrations were measured every ~ 4 days.
 
-1. `/sh` contains shell scripts. Mostly from running analysis on the [puhti compute cluster](https://docs.csc.fi/computing/systems-puhti/)
-2. `/R` contains R scripts
-3. `dataRaw` contains unprocessed data scraped from puhti
-4. `/data` contains data that has been processed in some way for later use
-5. `/figs` contains figures generated from R scripts
+1. `/R` contains R scripts
+2. `/data` contains data that has been processed in some way for later use
+3. `/data_raw` contains unprocessed data scraped from puhti
+4. `/figs` contains figures generated from R scripts
+5. `/sh` contains shell scripts. Mostly from running analysis on the [puhti compute cluster](https://docs.csc.fi/computing/systems-puhti/)
 6. `/tables` contains summary tables generated from R scripts
-7. `/rendered` contains any markdown or HTML that gets rendered in the process of running the scipts.
 
 # MANUSCRIPT:
 
-""
+"Coevolutionary mismatch between a microbial predator and its prey alters community-wide gene expression and ecosystem function"
 
 [Preprint available from bioRxiv]()
 
 Data and code here is provided under the MIT License. Feel free to use or remix as you see fit.
 
-# PROCESSING 16S AMPLICON DATA
+# OBTAINING SEQUENCING DATA
+
+Sequencing data is available from the NCBI Sequence Read Archive under [Bioproject PRJNA818876](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA818876) which can be viewed on the [NCBI SRA run selector](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA818876&o=acc_s%3Aa). 
 
 ## DOWNLOAD
 Install the [NCBI SRA Toolkit](https://github.com/ncbi/sra-tools). You can download a prebuilt binary [from here.](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit)
 
 Access SRA data following the [instructions here.](https://github.com/ncbi/sra-tools/wiki/HowTo:-Access-SRA-Data)
 
-You will need to [setup your configurations](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration), but afterwards you could basically do:
+You will need to [setup your configurations](https://github.com/ncbi/sra-tools/wiki/03.-Quick-Toolkit-Configuration), but afterwards you can basically do:
 
 ```{bash}
-prefetch SRR14323812
-fasterq-dump SRR14323812
+prefetch PRJNA818876
+fasterq-dump PRJNA818876
 ```
 
-You will need to do this for all the SRA accessions associated with BioProject: [PRJNA725120](https://www.ncbi.nlm.nih.gov/bioproject/725120). For example:
+You will need to do this for all the SRA accessions associated with BioProject: [PRJNA818876](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA818876). For example:
 
 ```{bash}
 cut -f1 00_SRA/sra_records.tsv | while read ID; do
@@ -50,18 +46,9 @@ cut -f1 00_SRA/sra_records.tsv | while read ID; do
 done
 ```
 
-This will take some time...
-
-# TODO
-1. Rename fastq files on puhti for amplicon and RNAseq. Use `16Smapping_newnames.tsv` for name conversions
-2. Stage files for upload to NCBI
+This sequencing data can be preprocessed and mapped using the scripts in the `/sh/rnaseq`, `/sh/amplicon`, and `/sh/variant` directories.
 
 # ANALYSIS
-To run the full analysis (will take some time). Note you must untar `rawData/16SAmplicon/bbmapRPKM.tar.gz` first.
-
-```{bash}
-bash sh/runFullAnalysis.sh
-```
 
 ## SBW25 variant analysis steps
 
