@@ -3,7 +3,6 @@
 .RData
 .Ruserdata
 README.html
-data/lgprOutput/**
 data/rnaseq/**
 data_raw/rnaseq/**
 sra/**
