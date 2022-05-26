@@ -4,5 +4,4 @@
 .Ruserdata
 README.html
 data/rnaseq/**
-data_raw/rnaseq/**
 sra/**
