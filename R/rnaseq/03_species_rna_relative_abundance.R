@@ -12,15 +12,15 @@ source(here::here("R", "rnaseq", "rnaseq_funs.R"))
 counts_formatted <- read_rds(here::here("data", "rnaseq", "counts_formatted.rds"))
 
 # metadata
-metadata <- read_tsv(here::here("data", "amplicon_metadata.tsv"))
+metadata <- read_tsv(here::here("data", "sample_metadata.tsv"))
 
 # number of noncoding rna per genome
-ncrnas <- read_tsv(here::here("dataRaw", "rnaseq", "hambi_noncoding_rna_ids.txt"), col_names = "gene") %>%
+ncrnas <- read_tsv(here::here("data_raw", "rnaseq", "hambi_noncoding_rna_ids.txt.xz"), col_names = "gene") %>%
   separate(gene, c("genome", "number"), sep = "_", remove=FALSE) %>%
   count(genome, name = "n_ncrna" ) %>%
   mutate(rnatype="noncoding")
 
-hambi_anno <- read_tsv(here::here("dataRaw", "rnaseq", "hambi_annotations_prokka.tsv")) %>%
+hambi_anno <- read_tsv(here::here("data_raw", "rnaseq", "hambi_annotations_prokka.tsv.xz")) %>%
   filter(locus_tag!="locus_tag") %>%
   separate(locus_tag, c("genome", "number"), sep = "_", remove=FALSE) %>%
   group_by(genome) %>%

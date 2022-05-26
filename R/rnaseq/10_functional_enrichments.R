@@ -7,7 +7,7 @@ library(pheatmap)
 library(Polychrome)
 library(patchwork)
 
-source(here::here("R", "rnaseq", "10_enrich_funs.R"))
+source(here::here("R", "rnaseq", "enrich_funs.R"))
 
 # Load data ---------------------------------------------------------------
 
@@ -26,15 +26,15 @@ gene_counts <-
   read_rds(here::here("data", "rnaseq", "compiled_deseq_norm_counts.rds"))
 
 # Load kegg pathways and their descriptions
-path2ko <- read_tsv(here("dataRaw", "rnaseq", "path2ko.tsv"), 
+path2ko <- read_tsv(here("data_raw", "rnaseq", "path2ko.tsv.xz"), 
                     col_names = c("PATH", "KO"), 
                     col_types="cc")
-pathdesc <- read_tsv(here("dataRaw", "rnaseq", "path_desc.tsv"), 
+pathdesc <- read_tsv(here("data_raw", "rnaseq", "path_desc.tsv.xz"), 
                      col_names = c("PATH", "DESC"), 
                      col_types="cc")
 
 # EggNogMapper results for the HAMBI genomes
-eggnog <- read_tsv(here("dataRaw", "rnaseq", "hambi_annotations_eggnog.tsv"),
+eggnog <- read_tsv(here("data_raw", "rnaseq", "hambi_annotations_eggnog.tsv.xz"),
                    col_names = c("Geneid",
                                  "seed.eggNOG.ortholog",
                                  "seed.ortholog.evalue",

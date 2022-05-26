@@ -9,11 +9,11 @@ counts_formatted <- read_rds(here::here("data", "rnaseq", "counts_formatted.rds"
   mutate(genome=str_replace(genome, "-", ""))
 
 # metadata
-metadata <- read_tsv(here::here("data", "amplicon_metadata.tsv"))
+metadata <- read_tsv(here::here("data", "sample_metadata.tsv"))
 
 # species relative abundances from amplicon
-sp_abund <-  left_join(read_tsv(here("data", "amplicon", "speciesCounts.tsv"), col_types = "ccccd"),
-                       read_tsv(here("data", "amplicon_metadata.tsv"), col_types = "cfffff")) %>%
+sp_abund <-  left_join(read_tsv(here("data", "16S_amplicon", "species_counts.tsv"), col_types = "ccccd"),
+                       read_tsv(here("data", "sample_metadata.tsv"), col_types = "cfffff")) %>%
   mutate(strainID=str_replace(strainID, "-", ""))
 
 # Rank species ------------------------------------------------------------

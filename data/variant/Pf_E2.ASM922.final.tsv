@@ -1,0 +1,368 @@
+CHROM	POS	TYPE	REF	ALT	EVIDENCE	FTYPE	STRAND	NT_POS	AA_POS	EFFECT	LOCUS_TAG	GENE	PRODUCT
+NC_012660.1	3764		C	T	T:0 C:0	CDS	+	1096/1104	366/367	missense_variant c.1096C>T p.Arg366Trp	PsFluSBW25_00003	recF	DNA replication and repair protein RecF
+NC_012660.1	17671		C	T	T:0 C:0	CDS	-	961/1374	321/457	missense_variant c.961G>A p.Gly321Arg	PsFluSBW25_00015	trkA	Trk system potassium uptake protein TrkA
+NC_012660.1	42001		CT	C	C:0 CT:0								
+NC_012660.1	42693		A	G	G:0 A:0	CDS	-	417/1002	139/333	synonymous_variant c.417T>C p.Asp139Asp	PsFluSBW25_00041		hypothetical protein
+NC_012660.1	45877		A	AG	AG:0 A:0								
+NC_012660.1	90207		C	T	T:0 C:0	CDS	-	652/1347	218/448	missense_variant c.652G>A p.Gly218Ser	PsFluSBW25_00087	algB	Alginate biosynthesis transcriptional regulatory protein AlgB
+NC_012660.1	115440		C	T	T:0 C:0								
+NC_012660.1	130297		G	T	T:0 G:0	CDS	-	1098/3372	366/1123	missense_variant c.1098C>A p.Phe366Leu	PsFluSBW25_00123	lgrD_1	Linear gramicidin synthase subunit D
+NC_012660.1	130321		G	T	T:0 G:0	CDS	-	1074/3372	358/1123	missense_variant c.1074C>A p.Phe358Leu	PsFluSBW25_00123	lgrD_1	Linear gramicidin synthase subunit D
+NC_012660.1	147766		C	T	T:0 C:0	CDS	+	596/1605	199/534	missense_variant c.596C>T p.Ala199Val	PsFluSBW25_00138		hypothetical protein
+NC_012660.1	188994		A	G	G:0 A:0								
+NC_012660.1	211615		G	C	C:0 G:0	CDS	+	1141/1911	381/636	missense_variant c.1141G>C p.Val381Leu	PsFluSBW25_00190		hypothetical protein
+NC_012660.1	248389		C	T	T:0 C:0	CDS	+	474/777	158/258	synonymous_variant c.474C>T p.Pro158Pro	PsFluSBW25_00231	glnQ_1	Glutamine transport ATP-binding protein GlnQ
+NC_012660.1	255393		A	G	G:0 A:0	CDS	+	2189/3066	730/1021	missense_variant c.2189A>G p.Asn730Ser	PsFluSBW25_00236	czcA_1	Cobalt-zinc-cadmium resistance protein CzcA
+NC_012660.1	345528		C	T	T:0 C:0	CDS	-	76/693	26/230	missense_variant c.76G>A p.Ala26Thr	PsFluSBW25_00313	artQ	Arginine ABC transporter permease protein ArtQ
+NC_012660.1	360359		CAGCCCGCTTGTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGTTGCGAAGCGACCCAATGAAGCCACCTCGTTCTTTCAGTCAGCGCGCCGTGGCTGTTTCTGGGGTTGCTTCGCAACCCAGCGCGGGGCA	C	C:0 CAGCCCGCTTGTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGTTGCGAAGCGACCCAATGAAGCCACCTCGTTCTTTCAGTCAGCGCGCCGTGGCTGTTTCTGGGGTTGCTTCGCAACCCAGCGCGGGGCA:0								
+NC_012660.1	431176		G	A	A:0 G:0	CDS	+	103/276	35/91	missense_variant c.103G>A p.Glu35Lys	PsFluSBW25_00394		hypothetical protein
+NC_012660.1	458540		C	T	T:0 C:0								
+NC_012660.1	495963		TGGGCAGGCCTGTTGTGATGAGCAGGGCTTGTTGTGGTGAGCAGGCTTGCCCTGCGCTGGGCTGCGAAGCAGCCCCAAAACCATTCACCGCGGTCTATCTGTAAAAATGAGGTGTGACGGTTGGGGCTGCTTCGCAGCCCAGCGCA	T	T:0 TGGGCAGGCCTGTTGTGATGAGCAGGGCTTGTTGTGGTGAGCAGGCTTGCCCTGCGCTGGGCTGCGAAGCAGCCCCAAAACCATTCACCGCGGTCTATCTGTAAAAATGAGGTGTGACGGTTGGGGCTGCTTCGCAGCCCAGCGCA:0								
+NC_012660.1	500207		T	TG	TG:0 T:0	CDS	-	166/1803	56/600	frameshift_variant c.166dupC p.His56fs	PsFluSBW25_00454	dmdC_1	3-methylmercaptopropionyl-CoA dehydrogenase
+NC_012660.1	505797		A	G	G:0 A:0	CDS	+	806/1485	269/494	missense_variant c.806A>G p.Asn269Ser	PsFluSBW25_00456	putP	Sodium/proline symporter
+NC_012660.1	506260		A	G	G:0 A:0	CDS	+	1269/1485	423/494	synonymous_variant c.1269A>G p.Lys423Lys	PsFluSBW25_00456	putP	Sodium/proline symporter
+NC_012660.1	512989		C	T	T:0 C:0	CDS	-	2255/2685	752/894	missense_variant c.2255G>A p.Arg752Gln	PsFluSBW25_00462		hypothetical protein
+NC_012660.1	571880		AGTCTTCGCCGCT	A	A:0 AGTCTTCGCCGCT:0	CDS	-	1155/1530	382/509	conservative_inframe_deletion c.1144_1155delAGCGGCGAAGAC p.Ser382_Asp385del	PsFluSBW25_00506		hypothetical protein
+NC_012660.1	588121		C	CG	CG:0 C:0	CDS	+	1175/1902	392/633	frameshift_variant c.1174dupG p.Ala392fs	PsFluSBW25_00521	mutL	DNA mismatch repair protein MutL
+NC_012660.1	591158		G	A	A:0 G:0	CDS	+	966/1302	322/433	synonymous_variant c.966G>A p.Leu322Leu	PsFluSBW25_00524	hflX	GTPase HflX
+NC_012660.1	668756		A	G	G:0 A:0	CDS	+	1639/4611	547/1536	missense_variant c.1639A>G p.Thr547Ala	PsFluSBW25_00591		hypothetical protein
+NC_012660.1	703046		G	A	A:0 G:0	CDS	-	74/456	25/151	missense_variant c.74C>T p.Ala25Val	PsFluSBW25_00619	aroQ1	3-dehydroquinate dehydratase 1
+NC_012660.1	709641		C	T	T:0 C:0								
+NC_012660.1	717000		A	G	G:0 A:0	CDS	+	2821/4899	941/1632	missense_variant c.2821A>G p.Thr941Ala	PsFluSBW25_00628	yfhM	putative lipoprotein YfhM
+NC_012660.1	725134		A	G	G:0 A:0	CDS	+	623/1956	208/651	missense_variant c.623A>G p.Asn208Ser	PsFluSBW25_00635		hypothetical protein
+NC_012660.1	725646		C	T	T:0 C:0	CDS	+	1135/1956	379/651	stop_gained c.1135C>T p.Gln379*	PsFluSBW25_00635		hypothetical protein
+NC_012660.1	748069		G	GC	GC:0 G:0								
+NC_012660.1	762366		A	G	G:0 A:0	CDS	-	39/660	13/219	synonymous_variant c.39T>C p.Gly13Gly	PsFluSBW25_00671	rutR_1	HTH-type transcriptional regulator RutR
+NC_012660.1	790434		G	T	T:0 G:0	CDS	-	326/1419	109/472	missense_variant c.326C>A p.Ala109Glu	PsFluSBW25_00695	atoE	Putative short-chain fatty acid transporter
+NC_012660.1	805424		A	G	G:0 A:0	CDS	-	416/1320	139/439	missense_variant c.416T>C p.Val139Ala	PsFluSBW25_00706	oprD_2	Porin D
+NC_012660.1	808979		C	T	T:0 C:0								
+NC_012660.1	854693		G	A	A:0 G:0	CDS	+	329/1026	110/341	missense_variant c.329G>A p.Arg110His	PsFluSBW25_00759	hemH	Ferrochelatase
+NC_012660.1	855185		A	G	G:0 A:0	CDS	+	821/1026	274/341	missense_variant c.821A>G p.Gln274Arg	PsFluSBW25_00759	hemH	Ferrochelatase
+NC_012660.1	863297		C	T	T:0 C:0	CDS	-	414/900	138/299	missense_variant c.414G>A p.Met138Ile	PsFluSBW25_00765	yihG_1	putative acyltransferase YihG
+NC_012660.1	866713		GT	G	G:0 GT:0								
+NC_012660.1	872522		G	A	A:0 G:0	CDS	+	2355/2832	785/943	synonymous_variant c.2355G>A p.Pro785Pro	PsFluSBW25_00771	ileS	Isoleucine--tRNA ligase
+NC_012660.1	901240		C	T	T:0 C:0	CDS	+	768/2031	256/676	synonymous_variant c.768C>T p.Ala256Ala	PsFluSBW25_00807		hypothetical protein
+NC_012660.1	907511		C	T	T:0 C:0	CDS	+	2433/2859	811/952	synonymous_variant c.2433C>T p.Gly811Gly	PsFluSBW25_00811		hypothetical protein
+NC_012660.1	925299		A	G	G:0 A:0	CDS	-	745/972	249/323	missense_variant c.745T>C p.Tyr249His	PsFluSBW25_00825	ddpF	putative D,D-dipeptide transport ATP-binding protein DdpF
+NC_012660.1	928976		C	T	T:0 C:0								
+NC_012660.1	929335		C	T	T:0 C:0	CDS	-	1294/1599	432/532	missense_variant c.1294G>A p.Gly432Ser	PsFluSBW25_00829	dppA_1	Periplasmic dipeptide transport protein
+NC_012660.1	930865		T	A	A:0 T:0	CDS	-	1242/1398	414/465	missense_variant c.1242A>T p.Glu414Asp	PsFluSBW25_00830	oprD_3	Porin D
+NC_012660.1	934188		A	G	G:0 A:0	CDS	-	1627/1629	543/542	stop_lost&splice_region_variant c.1627T>C p.Ter543Glnext*?	PsFluSBW25_00832	dppA_3	Periplasmic dipeptide transport protein
+NC_012660.1	935294		T	C	C:0 T:0	CDS	-	521/1629	174/542	missense_variant c.521A>G p.Asn174Ser	PsFluSBW25_00832	dppA_3	Periplasmic dipeptide transport protein
+NC_012660.1	935884		T	C	C:0 T:0								
+NC_012660.1	935885		G	A	A:0 G:0								
+NC_012660.1	960739		G	A	A:0 G:0	CDS	+	552/1365	184/454	synonymous_variant c.552G>A p.Val184Val	PsFluSBW25_00857	gudP	putative glucarate transporter
+NC_012660.1	977362		G	A	A:0 G:0	CDS	+	240/3816	80/1271	synonymous_variant c.240G>A p.Val80Val	PsFluSBW25_00874		hypothetical protein
+NC_012660.1	983251		C	T	T:0 C:0	CDS	+	1400/1443	467/480	missense_variant c.1400C>T p.Thr467Met	PsFluSBW25_00876	tldD	Metalloprotease TldD
+NC_012660.1	985332		G	GC	GC:0 G:0								
+NC_012660.1	994472		GCA	G	G:0 GCA:0	CDS	-	367/573	122/190	frameshift_variant c.366_367delTG p.Arg124fs	PsFluSBW25_00891		hypothetical protein
+NC_012660.1	995024		G	T	T:0 G:0	CDS	-	349/525	117/174	missense_variant c.349C>A p.Pro117Thr	PsFluSBW25_00892	kdsC	3-deoxy-D-manno-octulosonate 8-phosphate phosphatase KdsC
+NC_012660.1	1006651		C	T	T:0 C:0	CDS	-	304/639	102/212	missense_variant c.304G>A p.Ala102Thr	PsFluSBW25_00905	upp	Uracil phosphoribosyltransferase
+NC_012660.1	1032167		G	A	A:0 G:0	CDS	-	1003/1656	335/551	missense_variant c.1003C>T p.Arg335Cys	PsFluSBW25_00932	pqiB	Paraquat-inducible protein B
+NC_012660.1	1033682		A	AG	AG:0 A:0	CDS	-	112/645	38/214	frameshift_variant c.112dupC p.Leu38fs	PsFluSBW25_00933	pqiA_3	Paraquat-inducible protein A
+NC_012660.1	1034659		G	A	A:0 G:0	CDS	+	116/645	39/214	missense_variant c.116G>A p.Gly39Asp	PsFluSBW25_00935	gloC	Hydroxyacylglutathione hydrolase GloC
+NC_012660.1	1042186		C	T	T:0 C:0	CDS	+	174/942	58/313	synonymous_variant c.174C>T p.Pro58Pro	PsFluSBW25_00943	rsmH	Ribosomal RNA small subunit methyltransferase H
+NC_012660.1	1048922		C	T	T:0 C:0	CDS	+	22/1347	8/448	missense_variant c.22C>T p.His8Tyr	PsFluSBW25_00949	murD	UDP-N-acetylmuramoylalanine--D-glutamate ligase
+NC_012660.1	1050243		C	T	T:0 C:0	CDS	+	1343/1347	448/448	missense_variant c.1343C>T p.Ala448Val	PsFluSBW25_00949	murD	UDP-N-acetylmuramoylalanine--D-glutamate ligase
+NC_012660.1	1056701		C	T	T:0 C:0	CDS	+	895/1263	299/420	missense_variant c.895C>T p.Pro299Ser	PsFluSBW25_00955	ftsA	Cell division protein FtsA
+NC_012660.1	1058647		C	T	T:0 C:0	CDS	+	194/912	65/303	missense_variant c.194C>T p.Thr65Ile	PsFluSBW25_00957	lpxC	UDP-3-O-acyl-N-acetylglucosamine deacetylase
+NC_012660.1	1059412		CT	C	C:0 CT:0								
+NC_012660.1	1065132		T	C	C:0 T:0	CDS	-	815/1365	272/454	missense_variant c.815A>G p.Tyr272Cys	PsFluSBW25_00962		hypothetical protein
+NC_012660.1	1068879		C	T	T:0 C:0	CDS	-	872/3096	291/1031	missense_variant c.872G>A p.Arg291His	PsFluSBW25_00964	mdtB_1	Multidrug resistance protein MdtB
+NC_012660.1	1100292		A	G	G:0 A:0	CDS	-	178/1482	60/493	missense_variant c.178T>C p.Phe60Leu	PsFluSBW25_00993	alg8	Mannuronan synthase
+NC_012660.1	1104563		C	T	T:0 C:0	CDS	+	959/1125	320/374	missense_variant c.959C>T p.Ala320Val	PsFluSBW25_00996		hypothetical protein
+NC_012660.1	1104564		C	T	T:0 C:0	CDS	+	960/1125	320/374	synonymous_variant c.960C>T p.Ala320Ala	PsFluSBW25_00996		hypothetical protein
+NC_012660.1	1105387		G	A	A:0 G:0	CDS	+	319/1395	107/464	missense_variant c.319G>A p.Glu107Lys	PsFluSBW25_00997		hypothetical protein
+NC_012660.1	1107069		C	T	T:0 C:0	CDS	+	48/243	16/80	synonymous_variant c.48C>T p.Gly16Gly	PsFluSBW25_00999	moaD	Molybdopterin synthase sulfur carrier subunit
+NC_012660.1	1118868		A	AC	AC:0 A:0	CDS	-	637/1146	213/381	frameshift_variant c.637dupG p.Val213fs	PsFluSBW25_01012		hypothetical protein
+NC_012660.1	1151131		A	G	G:0 A:0	CDS	-	1994/2337	665/778	missense_variant c.1994T>C p.Val665Ala	PsFluSBW25_01043	fecA	Fe(3+) dicitrate transport protein FecA
+NC_012660.1	1161863		A	G	G:0 A:0								
+NC_012660.1	1187672		C	T	T:0 C:0	CDS	+	578/879	193/292	missense_variant c.578C>T p.Pro193Leu	PsFluSBW25_01076	pgdA_1	Peptidoglycan deacetylase
+NC_012660.1	1191370		T	TG	TG:0 T:0								
+NC_012660.1	1211747		C	CG	CG:0 C:0	CDS	+	1980/2595	660/864	frameshift_variant c.1979dupG p.Thr661fs	PsFluSBW25_01096	papC	Outer membrane usher protein PapC
+NC_012660.1	1246826		A	G	G:0 A:0	CDS	+	65/507	22/168	missense_variant c.65A>G p.Tyr22Cys	PsFluSBW25_01118		hypothetical protein
+NC_012660.1	1274909		C	T	T:0 C:0	CDS	-	1184/1539	395/512	missense_variant c.1184G>A p.Ser395Asn	PsFluSBW25_01141	glpD	Aerobic glycerol-3-phosphate dehydrogenase
+NC_012660.1	1279312		G	GC	GC:0 G:0	CDS	-	368/858	123/285	frameshift_variant c.368_369insG p.His123fs	PsFluSBW25_01144	glpF	Glycerol uptake facilitator protein
+NC_012660.1	1279523		A	AC	AC:0 A:0	CDS	-	157/858	53/285	frameshift_variant c.157dupG p.Val53fs	PsFluSBW25_01144	glpF	Glycerol uptake facilitator protein
+NC_012660.1	1299401		A	AG	AG:0 A:0								
+NC_012660.1	1302212		C	CCCAGCTTGA	CCCAGCTTGA:0 C:0	CDS	-	262/2592	88/863	conservative_inframe_insertion c.254_262dupTCAAGCTGG p.Val85_Leu87dup	PsFluSBW25_01164	mutS	DNA mismatch repair protein MutS
+NC_012660.1	1302282		G	A	A:0 G:0	CDS	-	193/2592	65/863	stop_gained c.193C>T p.Gln65*	PsFluSBW25_01164	mutS	DNA mismatch repair protein MutS
+NC_012660.1	1347709		G	A	A:0 G:0	CDS	-	4152/4575	1384/1524	synonymous_variant c.4152C>T p.Ser1384Ser	PsFluSBW25_01214		hypothetical protein
+NC_012660.1	1353139		GACTGAAACGGCCGCGACGACC	G	G:0 GACTGAAACGGCCGCGACGACC:0	CDS	+	876/1623	292/540	disruptive_inframe_deletion c.876_896delAACGGCCGCGACGACCACTGA p.Thr293_Glu299del	PsFluSBW25_01215		hypothetical protein
+NC_012660.1	1358066		C	T	T:0 C:0	CDS	+	1715/2268	572/755	missense_variant c.1715C>T p.Pro572Leu	PsFluSBW25_01219	frzE	Gliding motility regulatory protein
+NC_012660.1	1360481		A	G	G:0 A:0	CDS	+	806/1002	269/333	missense_variant c.806A>G p.Glu269Gly	PsFluSBW25_01221		hypothetical protein
+NC_012660.1	1406171		C	T	T:0 C:0	CDS	+	35/738	12/245	missense_variant c.35C>T p.Ala12Val	PsFluSBW25_01264	rpsB	30S ribosomal protein S2
+NC_012660.1	1413290		G	A	A:0 G:0	CDS	+	1020/1353	340/450	synonymous_variant c.1020G>A p.Leu340Leu	PsFluSBW25_01271	rseP	Regulator of sigma-E protease RseP
+NC_012660.1	1415622		A	G	G:0 A:0	CDS	+	1925/2388	642/795	missense_variant c.1925A>G p.Tyr642Cys	PsFluSBW25_01272	bamA_1	Outer membrane protein assembly factor BamA
+NC_012660.1	1425210		C	T	T:0 C:0	CDS	+	692/948	231/315	missense_variant c.692C>T p.Ala231Val	PsFluSBW25_01280	accA	Acetyl-coenzyme A carboxylase carboxyl transferase subunit alpha
+NC_012660.1	1451794		C	CG	CG:0 C:0	CDS	-	707/1005	236/334	frameshift_variant c.707dupC p.Ser237fs	PsFluSBW25_01306		hypothetical protein
+NC_012660.1	1480588		C	T	T:0 C:0	CDS	-	1063/1254	355/417	missense_variant c.1063G>A p.Val355Ile	PsFluSBW25_01336		hypothetical protein
+NC_012660.1	1480641		A	T	T:0 A:0	CDS	-	1010/1254	337/417	missense_variant c.1010T>A p.Val337Asp	PsFluSBW25_01336		hypothetical protein
+NC_012660.1	1545229		C	T	T:0 C:0	CDS	-	978/2292	326/763	synonymous_variant c.978G>A p.Leu326Leu	PsFluSBW25_01390		Beta-glucosidase BoGH3B
+NC_012660.1	1646116		G	GC	GC:0 G:0								
+NC_012660.1	1695347		A	G	G:0 A:0	CDS	-	1605/1929	535/642	synonymous_variant c.1605T>C p.Ser535Ser	PsFluSBW25_01538	slt	Soluble lytic murein transglycosylase
+NC_012660.1	1701630		C	T	T:0 C:0	CDS	+	898/2148	300/715	synonymous_variant c.898C>T p.Leu300Leu	PsFluSBW25_01542	fadB_1	Fatty acid oxidation complex subunit alpha
+NC_012660.1	1706024		T	C	C:0 T:0	CDS	+	1491/2622	497/873	synonymous_variant c.1491T>C p.Gly497Gly	PsFluSBW25_01545	topA	DNA topoisomerase 1
+NC_012660.1	1725702		C	T	T:0 C:0	CDS	+	1014/1251	338/416	synonymous_variant c.1014C>T p.Ala338Ala	PsFluSBW25_01560	lolE_1	Lipoprotein-releasing system transmembrane protein LolE
+NC_012660.1	1747531		A	AG	AG:0 A:0								
+NC_012660.1	1751181		A	G	G:0 A:0								
+NC_012660.1	1760427		G	A	A:0 G:0	CDS	+	1023/1200	341/399	synonymous_variant c.1023G>A p.Leu341Leu	PsFluSBW25_01593		hypothetical protein
+NC_012660.1	1761209		C	T	T:0 C:0	CDS	+	480/2913	160/970	synonymous_variant c.480C>T p.Thr160Thr	PsFluSBW25_01594		hypothetical protein
+NC_012660.1	1765846		C	T	T:0 C:0	CDS	-	319/906	107/301	missense_variant c.319G>A p.Gly107Ser	PsFluSBW25_01598		hypothetical protein
+NC_012660.1	1778145		G	A	A:0 G:0								
+NC_012660.1	1849044		T	C	C:0 T:0	CDS	+	389/798	130/265	missense_variant c.389T>C p.Leu130Pro	PsFluSBW25_01675		hypothetical protein
+NC_012660.1	1863575		C	T	T:0 C:0	CDS	-	177/726	59/241	stop_gained c.177G>A p.Trp59*	PsFluSBW25_01686		hypothetical protein
+NC_012660.1	1878852		A	G	G:0 A:0	CDS	-	347/483	116/160	missense_variant c.347T>C p.Val116Ala	PsFluSBW25_01703		hypothetical protein
+NC_012660.1	1898732		C	T	T:0 C:0								
+NC_012660.1	1906669		T	G	G:0 T:0	CDS	-	2437/3636	813/1211	missense_variant c.2437A>C p.Thr813Pro	PsFluSBW25_01730	bvgS_1	Virulence sensor protein BvgS
+NC_012660.1	1925143		C	T	T:0 C:0	CDS	+	616/636	206/211	synonymous_variant c.616C>T p.Leu206Leu	PsFluSBW25_01749	ccmA	Cytochrome c biogenesis ATP-binding export protein CcmA
+NC_012660.1	1942201		A	AG	AG:0 A:0								
+NC_012660.1	2000519		A	AG	AG:0 A:0								
+NC_012660.1	2094915		A	G	G:0 A:0	CDS	-	246/960	82/319	synonymous_variant c.246T>C p.Gly82Gly	PsFluSBW25_01914	traC	DNA primase TraC
+NC_012660.1	2147933		C	A	A:0 C:0	CDS	-	768/1191	256/396	synonymous_variant c.768G>T p.Pro256Pro	PsFluSBW25_01970		hypothetical protein
+NC_012660.1	2160375		A	G	G:0 A:0	CDS	-	1292/1359	431/452	missense_variant c.1292T>C p.Leu431Pro	PsFluSBW25_01986	naiP	Putative niacin/nicotinamide transporter NaiP
+NC_012660.1	2192911		A	G	G:0 A:0	CDS	+	389/2010	130/669	missense_variant c.389A>G p.Asn130Ser	PsFluSBW25_02011		hypothetical protein
+NC_012660.1	2211114		C	T	T:0 C:0	CDS	-	787/1077	263/358	missense_variant c.787G>A p.Gly263Ser	PsFluSBW25_02027		hypothetical protein
+NC_012660.1	2257856		C	T	T:0 C:0	CDS	-	763/1992	255/663	missense_variant c.763G>A p.Gly255Ser	PsFluSBW25_02071		hypothetical protein
+NC_012660.1	2263815		C	T	T:0 C:0	CDS	-			non_coding_transcript_exon_variant n.15G>A 	PsFluSBW25_02076		hypothetical protein
+NC_012660.1	2264959		C	A	A:0 C:0	CDS	+			intragenic_variant n.2264959C>A 	PsFluSBW25_02078		hypothetical protein
+NC_012660.1	2291778		G	A	A:0 G:0	CDS	-	741/1206	247/401	synonymous_variant c.741C>T p.Asn247Asn	PsFluSBW25_02104		hypothetical protein
+NC_012660.1	2298184		T	TG	TG:0 T:0	CDS	-	129/1080	43/359	frameshift_variant c.129dupC p.Lys44fs	PsFluSBW25_02111		hypothetical protein
+NC_012660.1	2303606		C	T	T:0 C:0	CDS	+	50/1320	17/439	missense_variant c.50C>T p.Ser17Phe	PsFluSBW25_02117		hypothetical protein
+NC_012660.1	2355667		C	T	T:0 C:0	CDS	-	967/1950	323/649	missense_variant c.967G>A p.Ala323Thr	PsFluSBW25_02165	iaaM_1	Tryptophan 2-monooxygenase
+NC_012660.1	2360526		T	TG	TG:0 T:0	CDS	+	1190/2706	397/901	frameshift_variant c.1189dupG p.Glu397fs	PsFluSBW25_02169	mgtA_1	Magnesium-transporting ATPase, P-type 1
+NC_012660.1	2369628		C	T	T:0 C:0	CDS	-	389/1083	130/360	missense_variant c.389G>A p.Gly130Asp	PsFluSBW25_02175	aroF_2	Phospho-2-dehydro-3-deoxyheptonate aldolase, Tyr-sensitive
+NC_012660.1	2370212		T	C	C:0 T:0								
+NC_012660.1	2382168		C	CG	CG:0 C:0	CDS	-	1185/1317	395/438	frameshift_variant c.1185dupC p.Ala396fs	PsFluSBW25_02190	yxeP_1	putative hydrolase YxeP
+NC_012660.1	2395870		A	G	G:0 A:0	CDS	-	983/1137	328/378	missense_variant c.983T>C p.Val328Ala	PsFluSBW25_02201	ssuD_1	Alkanesulfonate monooxygenase
+NC_012660.1	2405421		C	T	T:0 C:0	CDS	+	582/993	194/330	synonymous_variant c.582C>T p.Pro194Pro	PsFluSBW25_02208		putative aminopeptidase
+NC_012660.1	2429508		T	C	C:0 T:0	CDS	+	1873/2757	625/918	missense_variant c.1873T>C p.Phe625Leu	PsFluSBW25_02229		hypothetical protein
+NC_012660.1	2441593		C	CG	CG:0 C:0								
+NC_012660.1	2448707		A	G	G:0 A:0								
+NC_012660.1	2458700		C	T	T:0 C:0	CDS	+	671/3732	224/1243	missense_variant c.671C>T p.Ala224Val	PsFluSBW25_02255		hypothetical protein
+NC_012660.1	2459063		T	C	C:0 T:0	CDS	+	1034/3732	345/1243	missense_variant c.1034T>C p.Leu345Pro	PsFluSBW25_02255		hypothetical protein
+NC_012660.1	2476023		A	G	G:0 A:0	CDS	+	932/1038	311/345	missense_variant c.932A>G p.Asp311Gly	PsFluSBW25_02267	dppB_3	Dipeptide transport system permease protein DppB
+NC_012660.1	2484193		T	C	C:0 T:0	CDS	-	599/903	200/300	missense_variant c.599A>G p.Tyr200Cys	PsFluSBW25_02275	hcaR_1	Hca operon transcriptional activator HcaR
+NC_012660.1	2503391		AG	A	A:0 AG:0								
+NC_012660.1	2525265		T	G	G:0 T:0	CDS	-	1015/1242	339/413	missense_variant c.1015A>C p.Thr339Pro	PsFluSBW25_02306	soxB_1	Sarcosine oxidase subunit beta
+NC_012660.1	2533708		G	A	A:0 G:0								
+NC_012660.1	2535876		C	A	A:0 C:0								
+NC_012660.1	2569064		C	T	T:0 C:0	CDS	-	576/1944	192/647	synonymous_variant c.576G>A p.Val192Val	PsFluSBW25_02345	pctB_1	Methyl-accepting chemotaxis protein PctB
+NC_012660.1	2594476		C	CG	CG:0 C:0	CDS	+	1089/1227	363/408	frameshift_variant c.1088dupG p.Val364fs	PsFluSBW25_02367	nepI_2	Purine ribonucleoside efflux pump NepI
+NC_012660.1	2632935		A	AG	AG:0 A:0	CDS	+	2179/2313	727/770	frameshift_variant c.2178dupG p.Leu727fs	PsFluSBW25_02408	xcpQ	Type II secretion system protein D
+NC_012660.1	2661867		AGCGGGCTTGCCCCGCGCTGGGTGGCGAAGCCGCCCCAATAAGGACAGCGCGGTTCTTCAGAAGGAATAGCGGCGCCTGGTTTAGGGCGGCTTCGCCACCCAGCGCGGGGCAAGCCCGCTCACTACGGTGTGCG	A	A:0 AGCGGGCTTGCCCCGCGCTGGGTGGCGAAGCCGCCCCAATAAGGACAGCGCGGTTCTTCAGAAGGAATAGCGGCGCCTGGTTTAGGGCGGCTTCGCCACCCAGCGCGGGGCAAGCCCGCTCACTACGGTGTGCG:0								
+NC_012660.1	2691502		C	T	T:0 C:0								
+NC_012660.1	2694651		G	GA	GA:0 G:0	CDS	-	70/345	24/114	frameshift_variant c.70dupT p.Ser24fs	PsFluSBW25_02461		hypothetical protein
+NC_012660.1	2714376		A	G	G:0 A:0	CDS	+	981/1314	327/437	missense_variant c.981A>G p.Ile327Met	PsFluSBW25_02478	bdlA_2	Biofilm dispersion protein BdlA
+NC_012660.1	2787282		A	AC	AC:0 A:0								
+NC_012660.1	2808190		C	T	T:0 C:0	CDS	+	1564/11322	522/3773	synonymous_variant c.1564C>T p.Leu522Leu	PsFluSBW25_02531	tycC_1	Tyrocidine synthase 3
+NC_012660.1	2884292		A	G	G:0 A:0	CDS	-	227/249	76/82	missense_variant c.227T>C p.Val76Ala	PsFluSBW25_02594		hypothetical protein
+NC_012660.1	2903855		C	T	T:0 C:0	CDS	-	380/1062	127/353	missense_variant c.380G>A p.Gly127Asp	PsFluSBW25_02611	yejB_1	Inner membrane ABC transporter permease protein YejB
+NC_012660.1	2927859		C	T	T:0 C:0	CDS	+	223/414	75/137	missense_variant c.223C>T p.Arg75Cys	PsFluSBW25_02632	cueR_1	HTH-type transcriptional regulator CueR
+NC_012660.1	2951304		C	T	T:0 C:0	CDS	-	923/948	308/315	stop_gained c.923G>A p.Trp308*	PsFluSBW25_02650		hypothetical protein
+NC_012660.1	2959503		C	T	T:0 C:0	CDS	+	1321/2658	441/885	stop_gained c.1321C>T p.Gln441*	PsFluSBW25_02658	pepN	Aminopeptidase N
+NC_012660.1	2963027		A	G	G:0 A:0	CDS	+	840/1104	280/367	synonymous_variant c.840A>G p.Lys280Lys	PsFluSBW25_02661	zapE_2	Cell division protein ZapE
+NC_012660.1	2987734		G	A	A:0 G:0	CDS	+	94/255	32/84	missense_variant c.94G>A p.Gly32Ser	PsFluSBW25_02682		hypothetical protein
+NC_012660.1	3088925		T	C	C:0 T:0	CDS	+	175/1053	59/350	synonymous_variant c.175T>C p.Leu59Leu	PsFluSBW25_02774	nicX	2,5-dihydroxypyridine 5,6-dioxygenase
+NC_012660.1	3108296		A	G	G:0 A:0	CDS	-	746/1194	249/397	missense_variant c.746T>C p.Leu249Pro	PsFluSBW25_02791	intQ	Putative defective protein IntQ
+NC_012660.1	3109369		C	T	T:0 C:0	CDS	-	82/222	28/73	missense_variant c.82G>A p.Gly28Ser	PsFluSBW25_02792		hypothetical protein
+NC_012660.1	3109929		A	AG	AG:0 A:0								
+NC_012660.1	3144797		C	T	T:0 C:0	CDS	+	59/657	20/218	missense_variant c.59C>T p.Ala20Val	PsFluSBW25_02850		hypothetical protein
+NC_012660.1	3179204		C	A	A:0 C:0	CDS	+	630/1344	210/447	synonymous_variant c.630C>A p.Ile210Ile	PsFluSBW25_02888	pssA	CDP-diacylglycerol--serine O-phosphatidyltransferase
+NC_012660.1	3215993		C	T	T:0 C:0	CDS	-	353/951	118/316	missense_variant c.353G>A p.Gly118Asp	PsFluSBW25_02918	gsiC_2	Glutathione transport system permease protein GsiC
+NC_012660.1	3224807		T	C	C:0 T:0								
+NC_012660.1	3236954		CA	C	C:0 CA:0								
+NC_012660.1	3262113		C	T	T:0 C:0	CDS	-	757/1542	253/513	missense_variant c.757G>A p.Ala253Thr	PsFluSBW25_02971	pdeG	putative cyclic di-GMP phosphodiesterase PdeG
+NC_012660.1	3285981		A	G	G:0 A:0	CDS	+	677/3498	226/1165	missense_variant c.677A>G p.Lys226Arg	PsFluSBW25_02994		hypothetical protein
+NC_012660.1	3314333		C	T	T:0 C:0	CDS	-	751/1656	251/551	missense_variant c.751G>A p.Ala251Thr	PsFluSBW25_03016	arnT_1	Undecaprenyl phosphate-alpha-4-amino-4-deoxy-L-arabinose arabinosyl transferase
+NC_012660.1	3326860		C	T	T:0 C:0	CDS	+	645/750	215/249	synonymous_variant c.645C>T p.Gly215Gly	PsFluSBW25_03026	butA_2	Diacetyl reductase [(S)-acetoin forming]
+NC_012660.1	3364853		C	T	T:0 C:0	CDS	-	535/795	179/264	missense_variant c.535G>A p.Gly179Ser	PsFluSBW25_03060	novJ	Short-chain reductase protein NovJ
+NC_012660.1	3371453		C	T	T:0 C:0	CDS	-	772/1431	258/476	missense_variant c.772G>A p.Glu258Lys	PsFluSBW25_03065	feaB_1	Phenylacetaldehyde dehydrogenase
+NC_012660.1	3413463		G	A	A:0 G:0	CDS	+	1382/1479	461/492	missense_variant c.1382G>A p.Gly461Asp	PsFluSBW25_03095		hypothetical protein
+NC_012660.1	3433134		A	G	G:0 A:0								
+NC_012660.1	3438354		G	A	A:0 G:0	CDS	-	1140/1434	380/477	synonymous_variant c.1140C>T p.Gly380Gly	PsFluSBW25_03119	aprA_3	Metallopeptidase AprA
+NC_012660.1	3447980		TCC	T	T:0 TCC:0								
+NC_012660.1	3451491		G	GC	GC:0 G:0								
+NC_012660.1	3454804		C	T	T:0 C:0	CDS	-	1295/1425	432/474	missense_variant c.1295G>A p.Ser432Asn	PsFluSBW25_03132		hypothetical protein
+NC_012660.1	3457636		G	A	A:0 G:0	CDS	-	189/1023	63/340	synonymous_variant c.189C>T p.Gly63Gly	PsFluSBW25_03133		hypothetical protein
+NC_012660.1	3504632		C	T	T:0 C:0	CDS	-	250/1218	84/405	missense_variant c.250G>A p.Glu84Lys	PsFluSBW25_03169	fabF_3	3-oxoacyl-[acyl-carrier-protein] synthase 2
+NC_012660.1	3505494		T	C	C:0 T:0	CDS	-	693/1029	231/342	synonymous_variant c.693A>G p.Ala231Ala	PsFluSBW25_03171	fabH_3	3-oxoacyl-[acyl-carrier-protein] synthase 3
+NC_012660.1	3512984		G	A	A:0 G:0	CDS	+	1144/1518	382/505	missense_variant c.1144G>A p.Gly382Arg	PsFluSBW25_03178		Amidase
+NC_012660.1	3516625		T	C	C:0 T:0	CDS	+	600/1293	200/430	synonymous_variant c.600T>C p.Arg200Arg	PsFluSBW25_03182		hypothetical protein
+NC_012660.1	3529798		G	A	A:0 G:0	CDS	+	997/3372	333/1123	missense_variant c.997G>A p.Glu333Lys	PsFluSBW25_03190		hypothetical protein
+NC_012660.1	3547575		C	T	T:0 C:0	CDS	+	11246/13911	3749/4636	missense_variant c.11246C>T p.Thr3749Ile	PsFluSBW25_03193	tycC_3	Tyrocidine synthase 3
+NC_012660.1	3558733		G	A	A:0 G:0	CDS	+	8439/10065	2813/3354	synonymous_variant c.8439G>A p.Leu2813Leu	PsFluSBW25_03194	lgrB_1	Linear gramicidin synthase subunit B
+NC_012660.1	3560267		C	T	T:0 C:0	CDS	+	9973/10065	3325/3354	missense_variant c.9973C>T p.Arg3325Cys	PsFluSBW25_03194	lgrB_1	Linear gramicidin synthase subunit B
+NC_012660.1	3581144		G	A	A:0 G:0								
+NC_012660.1	3657188		A	AC	AC:0 A:0	CDS	+	592/1209	198/402	frameshift_variant c.591dupC p.Gly198fs	PsFluSBW25_03270	mhpT	3-(3-hydroxy-phenyl)propionate transporter
+NC_012660.1	3669482		T	C	C:0 T:0	CDS	-	661/699	221/232	missense_variant c.661A>G p.Ser221Gly	PsFluSBW25_03281		hypothetical protein
+NC_012660.1	3672664		G	A	A:0 G:0	CDS	-	207/969	69/322	synonymous_variant c.207C>T p.Gly69Gly	PsFluSBW25_03284	pstC	Phosphate transport system permease protein PstC
+NC_012660.1	3696879		G	A	A:0 G:0								
+NC_012660.1	3698184		T	C	C:0 T:0	CDS	-	239/648	80/215	missense_variant c.239A>G p.Tyr80Cys	PsFluSBW25_03307		hypothetical protein
+NC_012660.1	3698491		A	AC	AC:0 A:0								
+NC_012660.1	3714335		A	G	G:0 A:0								
+NC_012660.1	3720055		C	T	T:0 C:0	CDS	+	850/954	284/317	missense_variant c.850C>T p.His284Tyr	PsFluSBW25_03329	hprA_2	Glycerate dehydrogenase
+NC_012660.1	3737521		G	A	A:0 G:0	CDS	-	435/1035	145/344	synonymous_variant c.435C>T p.Gly145Gly	PsFluSBW25_03342	aphB	Acetylpolyamine amidohydrolase 2
+NC_012660.1	3758098		G	A	A:0 G:0								
+NC_012660.1	3765167		T	C	C:0 T:0								
+NC_012660.1	3792306		G	A	A:0 G:0	CDS	+	2240/3984	747/1327	missense_variant c.2240G>A p.Arg747His	PsFluSBW25_03390		hypothetical protein
+NC_012660.1	3865301		T	C	C:0 T:0	CDS	+	418/1068	140/355	missense_variant c.418T>C p.Cys140Arg	PsFluSBW25_03455		hypothetical protein
+NC_012660.1	3869834		G	C	C:0 G:0								
+NC_012660.1	3880492		G	A	A:0 G:0	CDS	+	69/354	23/117	missense_variant c.69G>A p.Met23Ile	PsFluSBW25_03467		hypothetical protein
+NC_012660.1	3889114		A	G	G:0 A:0	CDS	+	781/1242	261/413	missense_variant c.781A>G p.Ile261Val	PsFluSBW25_03474	sbcD	Nuclease SbcCD subunit D
+NC_012660.1	3910599		G	A	A:0 G:0	CDS	-	887/1344	296/447	missense_variant c.887C>T p.Thr296Ile	PsFluSBW25_03488		hypothetical protein
+NC_012660.1	3916876		G	GC	GC:0 G:0	CDS	-	1387/1455	463/484	frameshift_variant c.1387dupG p.Ala463fs	PsFluSBW25_03492	ompP1_2	Outer membrane protein P1
+NC_012660.1	3942839		G	A	A:0 G:0	CDS	+	1035/1143	345/380	synonymous_variant c.1035G>A p.Leu345Leu	PsFluSBW25_03515		hypothetical protein
+NC_012660.1	3955337		C	T	T:0 C:0	CDS	+	598/1155	200/384	missense_variant c.598C>T p.Pro200Ser	PsFluSBW25_03529		hypothetical protein
+NC_012660.1	3986410		A	G	G:0 A:0								
+NC_012660.1	3998303		T	TG	TG:0 T:0	CDS	-	274/615	92/204	frameshift_variant c.274dupC p.His92fs	PsFluSBW25_03564		hypothetical protein
+NC_012660.1	4008968		G	A	A:0 G:0	CDS	+	233/786	78/261	missense_variant c.233G>A p.Arg78His	PsFluSBW25_03572		hypothetical protein
+NC_012660.1	4017512		C	T	T:0 C:0	CDS	-	261/435	87/144	synonymous_variant c.261G>A p.Gln87Gln	PsFluSBW25_03587	ypeA	Acetyltransferase YpeA
+NC_012660.1	4019906		G	GC	GC:0 G:0	CDS	+	138/513	46/170	frameshift_variant c.137dupC p.Ala47fs	PsFluSBW25_03591	fecI_5	putative RNA polymerase sigma factor FecI
+NC_012660.1	4052700		T	C	C:0 T:0	CDS	-	1818/2076	606/691	synonymous_variant c.1818A>G p.Val606Val	PsFluSBW25_03618		hypothetical protein
+NC_012660.1	4117453		A	G	G:0 A:0	CDS	-	7/939	3/312	missense_variant c.7T>C p.Phe3Leu	PsFluSBW25_03677	ssuA_4	Putative aliphatic sulfonates-binding protein
+NC_012660.1	4180472		T	TG	TG:0 T:0	CDS	-	498/825	166/274	frameshift_variant c.498dupC p.Lys167fs	PsFluSBW25_03743	ttcA	tRNA-cytidine(32) 2-sulfurtransferase
+NC_012660.1	4193798		G	A	A:0 G:0	CDS	-	1298/2409	433/802	missense_variant c.1298C>T p.Thr433Ile	PsFluSBW25_03758	ftsK	DNA translocase FtsK
+NC_012660.1	4198382		G	A	A:0 G:0	CDS	-	1427/2271	476/756	missense_variant c.1427C>T p.Thr476Ile	PsFluSBW25_03762	clpA	ATP-dependent Clp protease ATP-binding subunit ClpA
+NC_012660.1	4221186		G	A	A:0 G:0	CDS	+	2489/2715	830/904	missense_variant c.2489G>A p.Arg830His	PsFluSBW25_03780	nuoG	NADH-quinone oxidoreductase subunit G
+NC_012660.1	4227942		G	A	A:0 G:0	CDS	+	712/1464	238/487	missense_variant c.712G>A p.Ala238Thr	PsFluSBW25_03787	nuoN	NADH-quinone oxidoreductase subunit N
+NC_012660.1	4245983		G	A	A:0 G:0	CDS	+	813/1245	271/414	synonymous_variant c.813G>A p.Arg271Arg	PsFluSBW25_03807		hypothetical protein
+NC_012660.1	4252092		G	A	A:0 G:0	CDS	-	609/774	203/257	synonymous_variant c.609C>T p.Leu203Leu	PsFluSBW25_03813	cysA_2	Sulfate/thiosulfate import ATP-binding protein CysA
+NC_012660.1	4290350		G	A	A:0 G:0	CDS	+	100/1164	34/387	missense_variant c.100G>A p.Ala34Thr	PsFluSBW25_03846	mmgC_5	Acyl-CoA dehydrogenase
+NC_012660.1	4297260		GC	G	G:0 GC:0								
+NC_012660.1	4305886		T	C	C:0 T:0	CDS	-	474/489	158/162	synonymous_variant c.474A>G p.Val158Val	PsFluSBW25_03860		hypothetical protein
+NC_012660.1	4314664		G	A	A:0 G:0	CDS	+	208/828	70/275	missense_variant c.208G>A p.Ala70Thr	PsFluSBW25_03869	phnX	Phosphonoacetaldehyde hydrolase
+NC_012660.1	4318986		G	A	A:0 G:0								
+NC_012660.1	4346992		G	A	A:0 G:0	CDS	+	613/1170	205/389	missense_variant c.613G>A p.Gly205Ser	PsFluSBW25_03898		hypothetical protein
+NC_012660.1	4364309		G	A	A:0 G:0	CDS	+	370/528	124/175	missense_variant c.370G>A p.Ala124Thr	PsFluSBW25_03913		hypothetical protein
+NC_012660.1	4393110		C	A	A:0 C:0	CDS	+	207/1971	69/656	missense_variant c.207C>A p.Phe69Leu	PsFluSBW25_03938	macB_3	Macrolide export ATP-binding/permease protein MacB
+NC_012660.1	4422995		G	C	C:0 G:0	CDS	-	426/669	142/222	synonymous_variant c.426C>G p.Gly142Gly	PsFluSBW25_03962		putative ABC transporter ATP-binding protein
+NC_012660.1	4443574		G	A	A:0 G:0	CDS	-	351/729	117/242	synonymous_variant c.351C>T p.Ala117Ala	PsFluSBW25_03976	glnQ_8	Glutamine transport ATP-binding protein GlnQ
+NC_012660.1	4452089		T	C	C:0 T:0								
+NC_012660.1	4454610		G	A	A:0 G:0	CDS	+	799/1551	267/516	missense_variant c.799G>A p.Val267Met	PsFluSBW25_03989	bmr3_2	Multidrug resistance protein 3
+NC_012660.1	4486831		G	A	A:0 G:0	CDS	+	18/1464	6/487	synonymous_variant c.18G>A p.Ser6Ser	PsFluSBW25_04017	ald	3-succinoylsemialdehyde-pyridine dehydrogenase
+NC_012660.1	4495365		C	T	T:0 C:0	CDS	-	687/1584	229/527	synonymous_variant c.687G>A p.Ala229Ala	PsFluSBW25_04026	rebO	Flavin-dependent L-tryptophan oxidase RebO
+NC_012660.1	4526899		G	A	A:0 G:0	CDS	-	2140/2406	714/801	synonymous_variant c.2140C>T p.Leu714Leu	PsFluSBW25_04053	fcuA_2	Ferrichrome receptor FcuA
+NC_012660.1	4541749		G	A	A:0 G:0	CDS	+	294/993	98/330	synonymous_variant c.294G>A p.Pro98Pro	PsFluSBW25_04065		hypothetical protein
+NC_012660.1	4543214		G	A	A:0 G:0	CDS	+	751/1182	251/393	missense_variant c.751G>A p.Ala251Thr	PsFluSBW25_04066		hypothetical protein
+NC_012660.1	4589894		A	G	G:0 A:0	CDS	-	1766/1923	589/640	missense_variant c.1766T>C p.Val589Ala	PsFluSBW25_04111	thrS	Threonine--tRNA ligase
+NC_012660.1	4602892		T	C	C:0 T:0								
+NC_012660.1	4643705		C	A	A:0 C:0	CDS	-	1358/1578	453/525	missense_variant c.1358G>T p.Arg453Met	PsFluSBW25_04168		hypothetical protein
+NC_012660.1	4643931		A	T	T:0 A:0	CDS	-	1132/1578	378/525	missense_variant c.1132T>A p.Ser378Thr	PsFluSBW25_04168		hypothetical protein
+NC_012660.1	4654537		G	A	A:0 G:0	CDS	+	1141/1197	381/398	missense_variant c.1141G>A p.Ala381Thr	PsFluSBW25_04179	tyrB	Aromatic-amino-acid aminotransferase
+NC_012660.1	4676639		G	C	C:0 G:0								
+NC_012660.1	4688904		G	GC	GC:0 G:0	CDS	+	173/864	58/287	frameshift_variant c.172dupC p.Arg58fs	PsFluSBW25_04220	cysL_4	HTH-type transcriptional regulator CysL
+NC_012660.1	4697224		ACAAGCCCGCTCACCACAAAAGCTCCACCATCACAAAAGCTCGATCACTACAGAGGCTCGATCACCAGAGGAGCCCAGCAAGTGCGCCCGGGTGGGCTGAGGGTTTCTGATTGGGTGCTGAGGGGCGAGCCTTTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGCTGCGAAGCGGCCCTAATGCGACCAGTGCGTTGAATCAGGCAGAGCGCGTGGCCAGGTTGGGGGCTGCTGCGCAGCCCAGCGCGGGG	A	A:0 ACAAGCCCGCTCACCACAAAAGCTCCACCATCACAAAAGCTCGATCACTACAGAGGCTCGATCACCAGAGGAGCCCAGCAAGTGCGCCCGGGTGGGCTGAGGGTTTCTGATTGGGTGCTGAGGGGCGAGCCTTTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGCTGCGAAGCGGCCCTAATGCGACCAGTGCGTTGAATCAGGCAGAGCGCGTGGCCAGGTTGGGGGCTGCTGCGCAGCCCAGCGCGGGG:0								
+NC_012660.1	4736650		G	A	A:0 G:0	CDS	+	292/1206	98/401	missense_variant c.292G>A p.Gly98Ser	PsFluSBW25_04266		Aspartate aminotransferase
+NC_012660.1	4764484		G	A	A:0 G:0	CDS	+	1267/1980	423/659	missense_variant c.1267G>A p.Glu423Lys	PsFluSBW25_04287	mnmC	tRNA 5-methylaminomethyl-2-thiouridine biosynthesis bifunctional protein MnmC
+NC_012660.1	4798742		G	A	A:0 G:0	CDS	-	72/603	24/200	synonymous_variant c.72C>T p.Gly24Gly	PsFluSBW25_04319	yfcG_4	Disulfide-bond oxidoreductase YfcG
+NC_012660.1	4811713		A	G	G:0 A:0	CDS	+	225/504	75/167	synonymous_variant c.225A>G p.Arg75Arg	PsFluSBW25_04329	allA	Ureidoglycolate lyase
+NC_012660.1	4856484		C	T	T:0 C:0								
+NC_012660.1	4874082		G	A	A:0 G:0	CDS	-	285/813	95/270	synonymous_variant c.285C>T p.Val95Val	PsFluSBW25_04374		hypothetical protein
+NC_012660.1	4884632		G	A	A:0 G:0	CDS	-	155/1317	52/438	missense_variant c.155C>T p.Ala52Val	PsFluSBW25_04384	flhF	Flagellar biosynthesis protein FlhF
+NC_012660.1	4888843		C	A	A:0 C:0	CDS	-	642/1137	214/378	synonymous_variant c.642G>T p.Leu214Leu	PsFluSBW25_04388	flhB	Flagellar biosynthetic protein FlhB
+NC_012660.1	4913683		G	A	A:0 G:0	CDS	-	488/930	163/309	missense_variant c.488C>T p.Ala163Val	PsFluSBW25_04414	fabH_4	3-oxoacyl-[acyl-carrier-protein] synthase 3
+NC_012660.1	4942385		G	A	A:0 G:0	CDS	-	45/1365	15/454	synonymous_variant c.45C>T p.Gly15Gly	PsFluSBW25_04437		hypothetical protein
+NC_012660.1	4943555		T	C	C:0 T:0	CDS	+	170/306	57/101	missense_variant c.170T>C p.Ile57Thr	PsFluSBW25_04439		hypothetical protein
+NC_012660.1	4953458		G	A	A:0 G:0	CDS	-	1043/1452	348/483	missense_variant c.1043C>T p.Pro348Leu	PsFluSBW25_04452	cobQ	Cobyric acid synthase
+NC_012660.1	4959452		A	G	G:0 A:0								
+NC_012660.1	5004989		C	CG	CG:0 C:0	CDS	-	248/1122	83/373	frameshift_variant c.248dupC p.Arg84fs	PsFluSBW25_04504		Beta-ketodecanoyl-[acyl-carrier-protein] synthase
+NC_012660.1	5040338		C	T	T:0 C:0	CDS	-	115/603	39/200	missense_variant c.115G>A p.Gly39Ser	PsFluSBW25_04535	recR	Recombination protein RecR
+NC_012660.1	5049434		G	A	A:0 G:0	CDS	-	1823/1962	608/653	missense_variant c.1823C>T p.Ala608Val	PsFluSBW25_04545		hypothetical protein
+NC_012660.1	5059253		C	T	T:0 C:0	CDS	-	1320/3489	440/1162	synonymous_variant c.1320G>A p.Glu440Glu	PsFluSBW25_04550	smc	Chromosome partition protein Smc
+NC_012660.1	5065424		A	T	T:0 A:0								
+NC_012660.1	5065439		G	T	T:0 G:0								
+NC_012660.1	5082808		G	A	A:0 G:0	CDS	+	978/1227	326/408	missense_variant c.978G>A p.Met326Ile	PsFluSBW25_04566	nrtA	Nitrate transport protein NrtA
+NC_012660.1	5103019		T	TC	TC:0 T:0	CDS	+	933/993	311/330	frameshift_variant c.932dupC p.Gly312fs	PsFluSBW25_04584		hypothetical protein
+NC_012660.1	5116213		G	A	A:0 G:0	CDS	+	521/1347	174/448	missense_variant c.521G>A p.Gly174Asp	PsFluSBW25_04595	pabB	Aminodeoxychorismate synthase component 1
+NC_012660.1	5125854		G	A	A:0 G:0	CDS	-	231/690	77/229	synonymous_variant c.231C>T p.Phe77Phe	PsFluSBW25_04605		Phosphorylated carbohydrates phosphatase
+NC_012660.1	5130735		G	A	A:0 G:0	CDS	-	99/609	33/202	synonymous_variant c.99C>T p.Asp33Asp	PsFluSBW25_04611		hypothetical protein
+NC_012660.1	5151047		G	A	A:0 G:0	CDS	-	412/1440	138/479	stop_gained c.412C>T p.Gln138*	PsFluSBW25_04632	norG_4	HTH-type transcriptional regulator NorG
+NC_012660.1	5167181		T	C	C:0 T:0	CDS	-	510/918	170/305	synonymous_variant c.510A>G p.Ala170Ala	PsFluSBW25_04649	rbsK_2	Ribokinase
+NC_012660.1	5199693		G	GC	GC:0 G:0								
+NC_012660.1	5207055		T	TC	TC:0 T:0								
+NC_012660.1	5207787		G	A	A:0 G:0	CDS	-	673/1305	225/434	missense_variant c.673C>T p.Arg225Cys	PsFluSBW25_04686	flgE	Flagellar hook protein FlgE
+NC_012660.1	5218402		C	T	T:0 C:0	CDS	-	1381/1443	461/480	missense_variant c.1381G>A p.Ala461Thr	PsFluSBW25_04701		Magnesium transporter MgtE
+NC_012660.1	5224078		G	A	A:0 G:0	CDS	-	849/2619	283/872	synonymous_variant c.849C>T p.His283His	PsFluSBW25_04707	alaS	Alanine--tRNA ligase
+NC_012660.1	5257937		G	A	A:0 G:0	CDS	+			non_coding_transcript_exon_variant n.428G>A 	PsFluSBW25_04735		hypothetical protein
+NC_012660.1	5291844		G	A	A:0 G:0	CDS	-	335/1353	112/450	missense_variant c.335C>T p.Ala112Val	PsFluSBW25_04772	gntT_2	High-affinity gluconate transporter
+NC_012660.1	5354520		G	A	A:0 G:0	CDS	-	979/1212	327/403	stop_gained c.979C>T p.Gln327*	PsFluSBW25_04835		hypothetical protein
+NC_012660.1	5372387		G	A	A:0 G:0	CDS	+	748/930	250/309	missense_variant c.748G>A p.Asp250Asn	PsFluSBW25_04853	arcC1	Carbamate kinase 1
+NC_012660.1	5373821		C	T	T:0 C:0	CDS	+	657/1512	219/503	synonymous_variant c.657C>T p.Ile219Ile	PsFluSBW25_04855	tyrR_2	Transcriptional regulatory protein TyrR
+NC_012660.1	5392288		G	A	A:0 G:0	CDS	-	60/456	20/151	synonymous_variant c.60C>T p.Asp20Asp	PsFluSBW25_04873	ybgC	Acyl-CoA thioester hydrolase YbgC
+NC_012660.1	5452817		G	A	A:0 G:0	CDS	+	1487/2571	496/856	missense_variant c.1487G>A p.Gly496Asp	PsFluSBW25_04928	hemR	Hemin receptor
+NC_012660.1	5455567		G	A	A:0 G:0	CDS	+	232/2139	78/712	missense_variant c.232G>A p.Ala78Thr	PsFluSBW25_04931	mcpU_4	Methyl-accepting chemotaxis protein McpU
+NC_012660.1	5463091		G	GC	GC:0 G:0	CDS	+	913/1158	305/385	frameshift_variant c.912dupC p.Asp305fs	PsFluSBW25_04936	mdtA_5	Multidrug resistance protein MdtA
+NC_012660.1	5516369		G	A	A:0 G:0	CDS	+	437/504	146/167	missense_variant c.437G>A p.Arg146His	PsFluSBW25_04985		hypothetical protein
+NC_012660.1	5529594		G	A	A:0 G:0	CDS	-	453/3897	151/1298	synonymous_variant c.453C>T p.Ala151Ala	PsFluSBW25_04994	purL	Phosphoribosylformylglycinamidine synthase
+NC_012660.1	5621703		T	C	C:0 T:0	CDS	+	1355/1890	452/629	missense_variant c.1355T>C p.Val452Ala	PsFluSBW25_05085		hypothetical protein
+NC_012660.1	5625406		C	T	T:0 C:0								
+NC_012660.1	5633938		G	A	A:0 G:0	CDS	-	1107/2019	369/672	synonymous_variant c.1107C>T p.Thr369Thr	PsFluSBW25_05100	cyoB	Cytochrome bo(3) ubiquinol oxidase subunit 1
+NC_012660.1	5640210		G	A	A:0 G:0	CDS	+	1353/1545	451/514	synonymous_variant c.1353G>A p.Pro451Pro	PsFluSBW25_05104	norR2	Nitric oxide reductase transcription regulator NorR2
+NC_012660.1	5695337		G	A	A:0 G:0	CDS	-	583/858	195/285	missense_variant c.583C>T p.Pro195Ser	PsFluSBW25_05160	kynA	Tryptophan 2,3-dioxygenase
+NC_012660.1	5696461		C	T	T:0 C:0	CDS	-	106/651	36/216	missense_variant c.106G>A p.Gly36Ser	PsFluSBW25_05161	kynB	Kynurenine formamidase
+NC_012660.1	5706909		G	A	A:0 G:0	CDS	-	188/1263	63/420	missense_variant c.188C>T p.Ala63Val	PsFluSBW25_05172	dgcN	Diguanylate cyclase DgcN
+NC_012660.1	5706924		T	C	C:0 T:0	CDS	-	173/1263	58/420	missense_variant c.173A>G p.Tyr58Cys	PsFluSBW25_05172	dgcN	Diguanylate cyclase DgcN
+NC_012660.1	5707458		A	G	G:0 A:0	CDS	-	208/573	70/190	missense_variant c.208T>C p.Cys70Arg	PsFluSBW25_05173		hypothetical protein
+NC_012660.1	5724658		G	A	A:0 G:0	CDS	-	703/858	235/285	missense_variant c.703C>T p.Arg235Cys	PsFluSBW25_05184		hypothetical protein
+NC_012660.1	5748184		C	T	T:0 C:0	CDS	+	605/1404	202/467	missense_variant c.605C>T p.Pro202Leu	PsFluSBW25_05206	pcnB	Poly(A) polymerase I
+NC_012660.1	5753773		G	T	T:0 G:0	CDS	+	384/1938	128/645	synonymous_variant c.384G>T p.Val128Val	PsFluSBW25_05211	acsA_3	Acetyl-coenzyme A synthetase
+NC_012660.1	5756655		G	A	A:0 G:0	CDS	+	385/1017	129/338	missense_variant c.385G>A p.Gly129Arg	PsFluSBW25_05213	rlmI_2	Ribosomal RNA large subunit methyltransferase I
+NC_012660.1	5775352		G	A	A:0 G:0	CDS	-	541/1911	181/636	missense_variant c.541C>T p.Arg181Cys	PsFluSBW25_05228	ftsH	ATP-dependent zinc metalloprotease FtsH
+NC_012660.1	5792925		G	A	A:0 G:0	CDS	-	25/768	9/255	missense_variant c.25C>T p.Arg9Cys	PsFluSBW25_05245	pdhR	Pyruvate dehydrogenase complex repressor
+NC_012660.1	5799724		G	A	A:0 G:0	CDS	+	847/1206	283/401	missense_variant c.847G>A p.Val283Ile	PsFluSBW25_05250	intA_4	Prophage integrase IntA
+NC_012660.1	5843940		G	A	A:0 G:0								
+NC_012660.1	5872298		G	A	A:0 G:0	CDS	+	201/1125	67/374	synonymous_variant c.201G>A p.Val67Val	PsFluSBW25_05313	rlmG	Ribosomal RNA large subunit methyltransferase G
+NC_012660.1	5877930		G	A	A:0 G:0	CDS	-	1860/2184	620/727	synonymous_variant c.1860C>T p.Asn620Asn	PsFluSBW25_05318	yagR	Putative xanthine dehydrogenase YagR molybdenum-binding subunit
+NC_012660.1	5880794		T	C	C:0 T:0	CDS	-	485/507	162/168	missense_variant c.485A>G p.Asp162Gly	PsFluSBW25_05320	yagT	Putative xanthine dehydrogenase YagT iron-sulfur-binding subunit
+NC_012660.1	5894991		G	GC	GC:0 G:0	CDS	-	558/999	186/332	frameshift_variant c.558dupG p.Gln187fs	PsFluSBW25_05331		hypothetical protein
+NC_012660.1	5900698		T	C	C:0 T:0	CDS	+	86/1335	29/444	missense_variant c.86T>C p.Val29Ala	PsFluSBW25_05337	exuT_2	Hexuronate transporter
+NC_012660.1	5906407		G	A	A:0 G:0	CDS	-	503/870	168/289	missense_variant c.503C>T p.Pro168Leu	PsFluSBW25_05343	tesB	Acyl-CoA thioesterase 2
+NC_012660.1	5918849		C	T	T:0 C:0								
+NC_012660.1	5936371		G	A	A:0 G:0	CDS	+	311/1329	104/442	missense_variant c.311G>A p.Gly104Asp	PsFluSBW25_05373	miaB	tRNA-2-methylthio-N(6)-dimethylallyladenosine synthase
+NC_012660.1	5962223		A	G	G:0 A:0	CDS	+	227/684	76/227	missense_variant c.227A>G p.Asp76Gly	PsFluSBW25_05398		hypothetical protein
+NC_012660.1	5969188		CGGGCAAGCCTGTTCAAAGGCTGAAAATCTCCCTGTAGTGAGCGGGCTTGCCCCGCGCTGGGCCGCGAAGCGGCCCCAAACCAGGCGAATGGTGTTTACCTGAAGTTCGGCGGTGTATTTATTGGGGCCGCTTCGCAGCCCAGCGCG	C	C:0 CGGGCAAGCCTGTTCAAAGGCTGAAAATCTCCCTGTAGTGAGCGGGCTTGCCCCGCGCTGGGCCGCGAAGCGGCCCCAAACCAGGCGAATGGTGTTTACCTGAAGTTCGGCGGTGTATTTATTGGGGCCGCTTCGCAGCCCAGCGCG:0								
+NC_012660.1	5979842		T	C	C:0 T:0	CDS	+	446/459	149/152	missense_variant c.446T>C p.Ile149Thr	PsFluSBW25_05415		hypothetical protein
+NC_012660.1	6007131		G	A	A:0 G:0	CDS	-	34/348	12/115	missense_variant c.34C>T p.Pro12Ser	PsFluSBW25_05447		hypothetical protein
+NC_012660.1	6024843		G	A	A:0 G:0	CDS	-	600/960	200/319	synonymous_variant c.600C>T p.Ser200Ser	PsFluSBW25_05462		hypothetical protein
+NC_012660.1	6055780		T	C	C:0 T:0	CDS	-	2036/4200	679/1399	missense_variant c.2036A>G p.Tyr679Cys	PsFluSBW25_05502	rpoC	DNA-directed RNA polymerase subunit beta'
+NC_012660.1	6067366		C	T	T:0 C:0	CDS	-	20/750	7/249	missense_variant c.20G>A p.Cys7Tyr	PsFluSBW25_05515	coaX	Type III pantothenate kinase
+NC_012660.1	6086537		C	T	T:0 C:0								
+NC_012660.1	6094677		A	G	G:0 A:0	CDS	-	1039/1248	347/415	missense_variant c.1039T>C p.Phe347Leu	PsFluSBW25_05544		hypothetical protein
+NC_012660.1	6123707		G	A	A:0 G:0	CDS	+	1478/1971	493/656	missense_variant c.1478G>A p.Gly493Asp	PsFluSBW25_05569	dnaG	DNA primase
+NC_012660.1	6128669		T	C	C:0 T:0	CDS	+	2430/3744	810/1247	synonymous_variant c.2430T>C p.Asp810Asp	PsFluSBW25_05571		hypothetical protein
+NC_012660.1	6135979		C	A	A:0 C:0	CDS	+	23/912	8/303	missense_variant c.23C>A p.Ser8Tyr	PsFluSBW25_05578	pqqB	Coenzyme PQQ synthesis protein B
+NC_012660.1	6135998		C	A	A:0 C:0	CDS	+	42/912	14/303	missense_variant c.42C>A p.Phe14Leu	PsFluSBW25_05578	pqqB	Coenzyme PQQ synthesis protein B
+NC_012660.1	6153636		G	A	A:0 G:0	CDS	-	750/1056	250/351	synonymous_variant c.750C>T p.Ile250Ile	PsFluSBW25_05594	bioB	Biotin synthase
+NC_012660.1	6168511		T	C	C:0 T:0	CDS	+	836/969	279/322	missense_variant c.836T>C p.Val279Ala	PsFluSBW25_05606	fecR_7	Protein FecR
+NC_012660.1	6191853		G	A	A:0 G:0	CDS	-	727/1251	243/416	missense_variant c.727C>T p.His243Tyr	PsFluSBW25_05629	soxB_3	Sarcosine oxidase subunit beta
+NC_012660.1	6200903		G	GC	GC:0 G:0	CDS	-	992/1101	331/366	frameshift_variant c.992dupG p.Glu332fs	PsFluSBW25_05637	hcr	NADH oxidoreductase HCR
+NC_012660.1	6210041		G	A	A:0 G:0	CDS	-	546/2061	182/686	synonymous_variant c.546C>T p.Ser182Ser	PsFluSBW25_05642	stcD	putative N-methylproline demethylase
+NC_012660.1	6223011		GCGCTCACTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGGGGCGAAGCCGCCCCAAAATCAGGCGACTCGGCTTTACCTGAAACTATGTGGTGCCTTTATTGGGGCGGCTTCGCCCCCCAGCGCGGGGCAAGCC	G	G:0 GCGCTCACTTGTAGTGAGCGGGCTTGCCCCGCGCTGGGGGGCGAAGCCGCCCCAAAATCAGGCGACTCGGCTTTACCTGAAACTATGTGGTGCCTTTATTGGGGCGGCTTCGCCCCCCAGCGCGGGGCAAGCC:0								
+NC_012660.1	6224094		G	GC	GC:0 G:0	CDS	-	443/1377	148/458	frameshift_variant c.443dupG p.Gly149fs	PsFluSBW25_05657	sdaA_2	L-serine dehydratase 1
+NC_012660.1	6305173		G	A	A:0 G:0	CDS	-	1673/2052	558/683	missense_variant c.1673C>T p.Thr558Ile	PsFluSBW25_05724		hypothetical protein
+NC_012660.1	6364861		C	T	T:0 C:0	CDS	-	96/1707	32/568	synonymous_variant c.96G>A p.Leu32Leu	PsFluSBW25_05784		hypothetical protein
+NC_012660.1	6372860		C	CG	CG:0 C:0	CDS	+	156/747	52/248	frameshift_variant c.155dupG p.Thr53fs	PsFluSBW25_05792		hypothetical protein
+NC_012660.1	6373599		C	G	G:0 C:0								
+NC_012660.1	6373607		C	T	T:0 C:0								
+NC_012660.1	6393872		C	T	T:0 C:0	CDS	+	1699/2355	567/784	stop_gained c.1699C>T p.Gln567*	PsFluSBW25_05812	quiP_2	Acyl-homoserine lactone acylase QuiP
+NC_012660.1	6394615		G	A	A:0 G:0	CDS	-	929/966	310/321	missense_variant c.929C>T p.Pro310Leu	PsFluSBW25_05813	cdhR_12	HTH-type transcriptional regulator CdhR
+NC_012660.1	6407200		A	G	G:0 A:0								
+NC_012660.1	6415471		T	C	C:0 T:0	CDS	-	1077/1374	359/457	synonymous_variant c.1077A>G p.Glu359Glu	PsFluSBW25_05834	nicP_9	Porin-like protein NicP
+NC_012660.1	6434228		T	C	C:0 T:0	CDS	-	70/1218	24/405	missense_variant c.70A>G p.Ser24Gly	PsFluSBW25_05850	ubiI	2-octaprenylphenol hydroxylase
+NC_012660.1	6436489		T	C	C:0 T:0	CDS	-	803/1323	268/440	missense_variant c.803A>G p.Tyr268Cys	PsFluSBW25_05853	pepP	Xaa-Pro aminopeptidase
+NC_012660.1	6439586		G	GC	GC:0 G:0								
+NC_012660.1	6439724		G	A	A:0 G:0								
+NC_012660.1	6447842		C	T	T:0 C:0	CDS	+	827/1338	276/445	missense_variant c.827C>T p.Ala276Val	PsFluSBW25_05865	glpT	Glycerol-3-phosphate transporter
+NC_012660.1	6449440		T	C	C:0 T:0	CDS	-	1979/2388	660/795	missense_variant c.1979A>G p.Asn660Ser	PsFluSBW25_05867		hypothetical protein
+NC_012660.1	6465287		G	GC	GC:0 G:0	CDS	-	449/2445	150/814	frameshift_variant c.449dupG p.Ala151fs	PsFluSBW25_05880		hypothetical protein
+NC_012660.1	6475826		G	A	A:0 G:0								
+NC_012660.1	6485936		G	A	A:0 G:0	CDS	-	846/1227	282/408	synonymous_variant c.846C>T p.Ala282Ala	PsFluSBW25_05899		hypothetical protein
+NC_012660.1	6517236		T	C	C:0 T:0	CDS	-	1298/1665	433/554	missense_variant c.1298A>G p.Lys433Arg	PsFluSBW25_05932		putative signaling protein
+NC_012660.1	6520375		A	G	G:0 A:0	CDS	+	1586/2010	529/669	missense_variant c.1586A>G p.Asp529Gly	PsFluSBW25_05933	rep	ATP-dependent DNA helicase Rep
+NC_012660.1	6522456		G	A	A:0 G:0	CDS	-	1046/1923	349/640	missense_variant c.1046C>T p.Pro349Leu	PsFluSBW25_05935		hypothetical protein
+NC_012660.1	6566764		T	C	C:0 T:0	CDS	-	2366/2976	789/991	missense_variant c.2366A>G p.Gln789Arg	PsFluSBW25_05981		hypothetical protein
+NC_012660.1	6578456		C	T	T:0 C:0	CDS	-	91/1338	31/445	missense_variant c.91G>A p.Gly31Ser	PsFluSBW25_05988		hypothetical protein
+NC_012660.1	6688921		G	GC	GC:0 G:0								
+NC_012660.1	6705385		G	A	A:0 G:0	CDS	-	849/1545	283/514	synonymous_variant c.849C>T p.Gly283Gly	PsFluSBW25_06092	atpA	ATP synthase subunit alpha
+NC_012660.1	6706880		G	A	A:0 G:0	CDS	-	395/471	132/156	missense_variant c.395C>T p.Ala132Val	PsFluSBW25_06094	atpF	ATP synthase subunit b

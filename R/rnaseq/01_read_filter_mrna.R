@@ -3,17 +3,18 @@ library(tidyverse)
 
 # Read data ---------------------------------------------------------------
 
-filelist <- list.files(here::here("dataRaw", "rnaseq", "counts"), full.names = TRUE)
+filelist <- list.files(here::here("data_raw", "rnaseq", "counts"), full.names = TRUE)
 files <- set_names(filelist, str_extract(filelist, regex("(?<=[/])([^/]+)(?=\\.[^.]+)")))
 
 counts <- map_df(files, read_tsv, 
                  comment = "#", 
                  col_names = TRUE,
                  col_types = "ccddcdd",
-                 .id = "sample")
+                 .id = "sample") %>%
+  mutate(sample=str_extract(sample, ".+(?=\\.tsv)"))
 
 # Read ids of all noncoding RNAs including 16S, 23S, 5S, 18S rRNAs and tRNAs
-ncrnas <- read_tsv(here("dataRaw", "rnaseq", "hambi_noncoding_rna_ids.txt"), 
+ncrnas <- read_tsv(here("data_raw", "rnaseq", "hambi_noncoding_rna_ids.txt.xz"), 
                    col_names="Geneid",
                    col_types="c") %>%
   mutate(rnatype="noncoding")

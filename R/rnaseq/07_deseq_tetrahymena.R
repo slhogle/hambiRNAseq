@@ -10,11 +10,11 @@ counts_formatted <-
   read_rds(here::here("data", "rnaseq", "counts_formatted.rds"))
 
 # metadata
-metadata <- read_tsv(here::here("data", "amplicon_metadata.tsv"))
+metadata <- read_tsv(here::here("data", "sample_metadata.tsv"))
 
 # tetrahymena annotations
 tet_annotation <-
-  read_tsv(here::here("dataRaw", "rnaseq", "tetrahymena_annotations.tsv"))
+  read_tsv(here::here("data_raw", "rnaseq", "tetrahymena_annotations.tsv.xz"))
 
 # Tetrahymena: filter and format ------------------------------------------
 counts_formatted_filt_tet <-

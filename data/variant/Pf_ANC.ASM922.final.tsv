@@ -1,0 +1,7 @@
+CHROM	POS	TYPE	REF	ALT	EVIDENCE	FTYPE	STRAND	NT_POS	AA_POS	EFFECT	LOCUS_TAG	GENE	PRODUCT
+NC_012660.1	45877		A	AG	AG:0 A:0	region	+			intergenic_region n.45877_45878insG 			
+NC_012660.1	895351		C	G	G:0 C:0	region	+			intragenic_variant n.895351C>G 			
+NC_012660.1	985332		G	GC	GC:0 G:0	region	+			intragenic_variant n.985332_985333insC 			
+NC_012660.1	1425210		C	T	T:0 C:0	CDS	+	692/948	231/315	missense_variant c.692C>T p.Ala231Val	PFLU_RS06355		acetyl-CoA carboxylase carboxyltransferase subunit alpha
+NC_012660.1	3447980		TCC	T	T:0 TCC:0	region	+			intragenic_variant n.3447981_3447982delCC 			
+NC_012660.1	3699702		A	T	T:0 A:0	region	+			intragenic_variant n.3699702A>T 			
