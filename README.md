@@ -17,7 +17,7 @@ in a closed system without new nutrient inputs. RNAseq samples were collectd on 
 
 "Localized coevolution between microbial predator and prey alters community-wide gene expression and ecosystem function"
 
-[Preprint available from bioRxiv]()
+[Preprint available from bioRxiv](https://doi.org/10.1101/2022.05.26.493533)
 
 Data and code here is provided under the MIT License. Feel free to use or remix as you see fit.
 
@@ -77,12 +77,12 @@ Note this analysis borrows heavily from the [excellent paper by BH Good](https:/
 5. `05_puhti_lgpr_opd.R` -- run lgpr on cluster for bacteria optical density
 6. `06_lgpr_process_plot.R` -- Process output from lgpr and plot Figure 3
 
-## Amplicon analysis steps
-### Run on cluster:
+# Amplicon analysis steps
+## Run on cluster:
 1. `AmpliconQualityControl.sh`
 2. `AmpliconMapping.sh`
 
-### Analysis in R
+## Analysis in R
 1. `01_rpkm2tab.R` -- Prepare amplicon count tables. Count tables saved in `data`
 2. `02_make_phyloseq.R` -- Make phyloseq object
 3. `03_make_figS3.R` -- Make Fig. S3
@@ -95,13 +95,13 @@ Note this analysis borrows heavily from the [excellent paper by BH Good](https:/
     d. `09_corncob_interaction.R`
 7. `10_make_Fig3.R` -- compile results to make main text Fig. 4
 
-## RNAseq analysis steps
+# RNAseq analysis steps
 
-### Run on cluster
+## Run on cluster
 1. `process_metatranscriptomes.sh` - quality control RNAseq data
 2. `map_count_metaT.sh` - map reads against 30 HAMBI genomes using bbmap
 
-### Analysis in R
+## Analysis in R
 1. `01_read_filter_mrna.R` - read the feat counts and format
 2. `02_rnaseq_stats.R` - calculate general stats (% noncoding RNA, etc...)
 3. `03_species_rna_relative_abundance.R` - make supplementary Fig S3 showing proportion of bacterial species in the RNA dataset (excluding Tetrahymena).
