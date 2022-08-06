@@ -4,4 +4,5 @@
 .Ruserdata
 README.html
 data/rnaseq/**
-sra/**
+_wip/**
+_notrack/**
