@@ -1,6 +1,7 @@
 # hambiRNAseq
 
 <!-- badges: start -->
+[![DOI](https://zenodo.org/badge/411568623.svg)](https://zenodo.org/badge/latestdoi/411568623)
 <!-- badges: end -->
 
 This is project contains data from the HAMBI species gene expression project. 30 HAMBI bacterial species were grown with either a low trait-diversity, ancestral *Pseudomonas fluorescens* SBW25 or a coevolved population of SBW25 that had been co-cultured with a *Tetrahymena* ciliate. These two treatments were conducted in the presence and absence of the coevolved ciliate. The experiment duration was 55 days. No fresh media was added, so the bacteria and ciliate were growing 
