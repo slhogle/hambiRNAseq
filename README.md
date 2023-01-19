@@ -1,11 +1,25 @@
-# hambiRNAseq
-
 <!-- badges: start -->
-[![DOI](https://zenodo.org/badge/411568623.svg)](https://zenodo.org/badge/latestdoi/411568623)
+The ISME Journal: [![DOI:10.1038/s41396-023-01361-9](http://img.shields.io/badge/DOI-10.1038/s41396--023--01361--9-4F761F.svg)](https://doi.org/10.1038/s41396-023-01361-9)
+
+bioRxiv: [![DOI:10.1101/2022.05.26.493533](http://img.shields.io/badge/DOI-10.1101/2022.05.26.493533-B31B1B.svg)](https://doi.org/10.1101/2022.05.26.493533)
+
+Code and data archive: [![DOI](https://zenodo.org/badge/411568623.svg)](https://zenodo.org/badge/latestdoi/411568623)
 <!-- badges: end -->
 
+# Publication
+
+"Localized coevolution between microbial predator and prey alters community-wide gene expression and ecosystem function"
+
+[Preprint available from bioRxiv](https://doi.org/10.1101/2022.05.26.493533)
+[Peer-reviewed version published in The ISME Journal](https://doi.org/10.1038/s41396-023-01361-9)
+
+Data and code here is provided under the MIT License. Feel free to use or remix as you see fit.
+
+# Project description
 This is project contains data from the HAMBI species gene expression project. 30 HAMBI bacterial species were grown with either a low trait-diversity, ancestral *Pseudomonas fluorescens* SBW25 or a coevolved population of SBW25 that had been co-cultured with a *Tetrahymena* ciliate. These two treatments were conducted in the presence and absence of the coevolved ciliate. The experiment duration was 55 days. No fresh media was added, so the bacteria and ciliate were growing 
 in a closed system without new nutrient inputs. RNAseq samples were collectd on days 4 and 45. 16S amplicon samples were collected on days 4, 41, and 45. Ciliate counts, bacterial CFUs, and community ATP concentrations were measured every ~ 4 days.
+
+# Repository structure
 
 1. `/R` contains R scripts
 2. `/data` contains data that has been processed in some way for later use
@@ -14,19 +28,11 @@ in a closed system without new nutrient inputs. RNAseq samples were collectd on 
 5. `/sh` contains shell scripts. Mostly from running analysis on the [puhti compute cluster](https://docs.csc.fi/computing/systems-puhti/)
 6. `/tables` contains summary tables generated from R scripts
 
-# MANUSCRIPT:
-
-"Localized coevolution between microbial predator and prey alters community-wide gene expression and ecosystem function"
-
-[Preprint available from bioRxiv](https://doi.org/10.1101/2022.05.26.493533)
-
-Data and code here is provided under the MIT License. Feel free to use or remix as you see fit.
-
-# OBTAINING SEQUENCING DATA
+# Obtaining sequencing data
 
 Sequencing data is available from the NCBI Sequence Read Archive under [Bioproject PRJNA818876](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA818876) which can be viewed on the [NCBI SRA run selector](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA818876&o=acc_s%3Aa). 
 
-## DOWNLOAD
+## SRA download
 Install the [NCBI SRA Toolkit](https://github.com/ncbi/sra-tools). You can download a prebuilt binary [from here.](https://github.com/ncbi/sra-tools/wiki/02.-Installing-SRA-Toolkit)
 
 Access SRA data following the [instructions here.](https://github.com/ncbi/sra-tools/wiki/HowTo:-Access-SRA-Data)
