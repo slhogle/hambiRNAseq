@@ -1,17 +1,17 @@
 <!-- badges: start -->
-The ISME Journal: [![DOI:10.1038/s41396-023-01361-9](http://img.shields.io/badge/DOI-10.1038/s41396--023--01361--9-4F761F.svg)](https://doi.org/10.1038/s41396-023-01361-9)
+**The ISME Journal:** [![DOI:10.1038/s41396-023-01361-9](http://img.shields.io/badge/DOI-10.1038/s41396--023--01361--9-4F761F.svg)](https://doi.org/10.1038/s41396-023-01361-9)
 
-bioRxiv: [![DOI:10.1101/2022.05.26.493533](http://img.shields.io/badge/DOI-10.1101/2022.05.26.493533-B31B1B.svg)](https://doi.org/10.1101/2022.05.26.493533)
+**bioRxiv:** [![DOI:10.1101/2022.05.26.493533](http://img.shields.io/badge/DOI-10.1101/2022.05.26.493533-B31B1B.svg)](https://doi.org/10.1101/2022.05.26.493533)
 
-Code and data archive: [![DOI](https://zenodo.org/badge/411568623.svg)](https://zenodo.org/badge/latestdoi/411568623)
+**Code and data archive:** [![DOI](https://zenodo.org/badge/411568623.svg)](https://zenodo.org/badge/latestdoi/411568623)
 <!-- badges: end -->
 
 # Publication
 
 "Localized coevolution between microbial predator and prey alters community-wide gene expression and ecosystem function"
 
-[Preprint available from bioRxiv](https://doi.org/10.1101/2022.05.26.493533)
-[Peer-reviewed version published in The ISME Journal](https://doi.org/10.1038/s41396-023-01361-9)
+- [Preprint available from bioRxiv](https://doi.org/10.1101/2022.05.26.493533)
+- [Peer-reviewed version published in The ISME Journal](https://doi.org/10.1038/s41396-023-01361-9)
 
 Data and code here is provided under the MIT License. Feel free to use or remix as you see fit.
 
